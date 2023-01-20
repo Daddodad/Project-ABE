@@ -111,6 +111,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named abecontextzzg
+
+# Build rule for target.
+abecontextzzg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 abecontextzzg
+.PHONY : abecontextzzg
+
+# fast build rule for target.
+abecontextzzg/fast:
+	$(MAKE) -f CMakeFiles/abecontextzzg.dir/build.make CMakeFiles/abecontextzzg.dir/build
+.PHONY : abecontextzzg/fast
+
+#=============================================================================
+# Target rules for targets named Esempio
+
+# Build rule for target.
+Esempio: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Esempio
+.PHONY : Esempio
+
+# fast build rule for target.
+Esempio/fast:
+	$(MAKE) -f CMakeFiles/Esempio.dir/build.make CMakeFiles/Esempio.dir/build
+.PHONY : Esempio/fast
+
+#=============================================================================
 # Target rules for targets named ibe
 
 # Build rule for target.
@@ -149,86 +175,140 @@ cpa-abe/fast:
 	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/build
 .PHONY : cpa-abe/fast
 
-src/cp-abe-two-phase.o: src/cp-abe-two-phase.cpp.o
+src/lib/abecontextzzg.o: src/lib/abecontextzzg.cpp.o
 
-.PHONY : src/cp-abe-two-phase.o
-
-# target to build an object file
-src/cp-abe-two-phase.cpp.o:
-	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.o
-.PHONY : src/cp-abe-two-phase.cpp.o
-
-src/cp-abe-two-phase.i: src/cp-abe-two-phase.cpp.i
-
-.PHONY : src/cp-abe-two-phase.i
-
-# target to preprocess a source file
-src/cp-abe-two-phase.cpp.i:
-	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.i
-.PHONY : src/cp-abe-two-phase.cpp.i
-
-src/cp-abe-two-phase.s: src/cp-abe-two-phase.cpp.s
-
-.PHONY : src/cp-abe-two-phase.s
-
-# target to generate assembly for a file
-src/cp-abe-two-phase.cpp.s:
-	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.s
-.PHONY : src/cp-abe-two-phase.cpp.s
-
-src/cpa-abe.o: src/cpa-abe.cpp.o
-
-.PHONY : src/cpa-abe.o
+.PHONY : src/lib/abecontextzzg.o
 
 # target to build an object file
-src/cpa-abe.cpp.o:
-	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.o
-.PHONY : src/cpa-abe.cpp.o
+src/lib/abecontextzzg.cpp.o:
+	$(MAKE) -f CMakeFiles/abecontextzzg.dir/build.make CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.o
+.PHONY : src/lib/abecontextzzg.cpp.o
 
-src/cpa-abe.i: src/cpa-abe.cpp.i
+src/lib/abecontextzzg.i: src/lib/abecontextzzg.cpp.i
 
-.PHONY : src/cpa-abe.i
+.PHONY : src/lib/abecontextzzg.i
 
 # target to preprocess a source file
-src/cpa-abe.cpp.i:
-	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.i
-.PHONY : src/cpa-abe.cpp.i
+src/lib/abecontextzzg.cpp.i:
+	$(MAKE) -f CMakeFiles/abecontextzzg.dir/build.make CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.i
+.PHONY : src/lib/abecontextzzg.cpp.i
 
-src/cpa-abe.s: src/cpa-abe.cpp.s
+src/lib/abecontextzzg.s: src/lib/abecontextzzg.cpp.s
 
-.PHONY : src/cpa-abe.s
+.PHONY : src/lib/abecontextzzg.s
 
 # target to generate assembly for a file
-src/cpa-abe.cpp.s:
-	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.s
-.PHONY : src/cpa-abe.cpp.s
+src/lib/abecontextzzg.cpp.s:
+	$(MAKE) -f CMakeFiles/abecontextzzg.dir/build.make CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.s
+.PHONY : src/lib/abecontextzzg.cpp.s
 
-src/ibe.o: src/ibe.cpp.o
+src/main/Esempio.o: src/main/Esempio.cpp.o
 
-.PHONY : src/ibe.o
+.PHONY : src/main/Esempio.o
 
 # target to build an object file
-src/ibe.cpp.o:
-	$(MAKE) -f CMakeFiles/ibe.dir/build.make CMakeFiles/ibe.dir/src/ibe.cpp.o
-.PHONY : src/ibe.cpp.o
+src/main/Esempio.cpp.o:
+	$(MAKE) -f CMakeFiles/Esempio.dir/build.make CMakeFiles/Esempio.dir/src/main/Esempio.cpp.o
+.PHONY : src/main/Esempio.cpp.o
 
-src/ibe.i: src/ibe.cpp.i
+src/main/Esempio.i: src/main/Esempio.cpp.i
 
-.PHONY : src/ibe.i
+.PHONY : src/main/Esempio.i
 
 # target to preprocess a source file
-src/ibe.cpp.i:
-	$(MAKE) -f CMakeFiles/ibe.dir/build.make CMakeFiles/ibe.dir/src/ibe.cpp.i
-.PHONY : src/ibe.cpp.i
+src/main/Esempio.cpp.i:
+	$(MAKE) -f CMakeFiles/Esempio.dir/build.make CMakeFiles/Esempio.dir/src/main/Esempio.cpp.i
+.PHONY : src/main/Esempio.cpp.i
 
-src/ibe.s: src/ibe.cpp.s
+src/main/Esempio.s: src/main/Esempio.cpp.s
 
-.PHONY : src/ibe.s
+.PHONY : src/main/Esempio.s
 
 # target to generate assembly for a file
-src/ibe.cpp.s:
-	$(MAKE) -f CMakeFiles/ibe.dir/build.make CMakeFiles/ibe.dir/src/ibe.cpp.s
-.PHONY : src/ibe.cpp.s
+src/main/Esempio.cpp.s:
+	$(MAKE) -f CMakeFiles/Esempio.dir/build.make CMakeFiles/Esempio.dir/src/main/Esempio.cpp.s
+.PHONY : src/main/Esempio.cpp.s
+
+src/main/cp-abe-two-phase.o: src/main/cp-abe-two-phase.cpp.o
+
+.PHONY : src/main/cp-abe-two-phase.o
+
+# target to build an object file
+src/main/cp-abe-two-phase.cpp.o:
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.o
+.PHONY : src/main/cp-abe-two-phase.cpp.o
+
+src/main/cp-abe-two-phase.i: src/main/cp-abe-two-phase.cpp.i
+
+.PHONY : src/main/cp-abe-two-phase.i
+
+# target to preprocess a source file
+src/main/cp-abe-two-phase.cpp.i:
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.i
+.PHONY : src/main/cp-abe-two-phase.cpp.i
+
+src/main/cp-abe-two-phase.s: src/main/cp-abe-two-phase.cpp.s
+
+.PHONY : src/main/cp-abe-two-phase.s
+
+# target to generate assembly for a file
+src/main/cp-abe-two-phase.cpp.s:
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.s
+.PHONY : src/main/cp-abe-two-phase.cpp.s
+
+src/main/cpa-abe.o: src/main/cpa-abe.cpp.o
+
+.PHONY : src/main/cpa-abe.o
+
+# target to build an object file
+src/main/cpa-abe.cpp.o:
+	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.o
+.PHONY : src/main/cpa-abe.cpp.o
+
+src/main/cpa-abe.i: src/main/cpa-abe.cpp.i
+
+.PHONY : src/main/cpa-abe.i
+
+# target to preprocess a source file
+src/main/cpa-abe.cpp.i:
+	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.i
+.PHONY : src/main/cpa-abe.cpp.i
+
+src/main/cpa-abe.s: src/main/cpa-abe.cpp.s
+
+.PHONY : src/main/cpa-abe.s
+
+# target to generate assembly for a file
+src/main/cpa-abe.cpp.s:
+	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.s
+.PHONY : src/main/cpa-abe.cpp.s
+
+src/main/ibe.o: src/main/ibe.cpp.o
+
+.PHONY : src/main/ibe.o
+
+# target to build an object file
+src/main/ibe.cpp.o:
+	$(MAKE) -f CMakeFiles/ibe.dir/build.make CMakeFiles/ibe.dir/src/main/ibe.cpp.o
+.PHONY : src/main/ibe.cpp.o
+
+src/main/ibe.i: src/main/ibe.cpp.i
+
+.PHONY : src/main/ibe.i
+
+# target to preprocess a source file
+src/main/ibe.cpp.i:
+	$(MAKE) -f CMakeFiles/ibe.dir/build.make CMakeFiles/ibe.dir/src/main/ibe.cpp.i
+.PHONY : src/main/ibe.cpp.i
+
+src/main/ibe.s: src/main/ibe.cpp.s
+
+.PHONY : src/main/ibe.s
+
+# target to generate assembly for a file
+src/main/ibe.cpp.s:
+	$(MAKE) -f CMakeFiles/ibe.dir/build.make CMakeFiles/ibe.dir/src/main/ibe.cpp.s
+.PHONY : src/main/ibe.cpp.s
 
 # Help Target
 help:
@@ -238,18 +318,26 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... abecontextzzg"
+	@echo "... Esempio"
 	@echo "... ibe"
 	@echo "... cp-abe-two-phase"
 	@echo "... cpa-abe"
-	@echo "... src/cp-abe-two-phase.o"
-	@echo "... src/cp-abe-two-phase.i"
-	@echo "... src/cp-abe-two-phase.s"
-	@echo "... src/cpa-abe.o"
-	@echo "... src/cpa-abe.i"
-	@echo "... src/cpa-abe.s"
-	@echo "... src/ibe.o"
-	@echo "... src/ibe.i"
-	@echo "... src/ibe.s"
+	@echo "... src/lib/abecontextzzg.o"
+	@echo "... src/lib/abecontextzzg.i"
+	@echo "... src/lib/abecontextzzg.s"
+	@echo "... src/main/Esempio.o"
+	@echo "... src/main/Esempio.i"
+	@echo "... src/main/Esempio.s"
+	@echo "... src/main/cp-abe-two-phase.o"
+	@echo "... src/main/cp-abe-two-phase.i"
+	@echo "... src/main/cp-abe-two-phase.s"
+	@echo "... src/main/cpa-abe.o"
+	@echo "... src/main/cpa-abe.i"
+	@echo "... src/main/cpa-abe.s"
+	@echo "... src/main/ibe.o"
+	@echo "... src/main/ibe.i"
+	@echo "... src/main/ibe.s"
 .PHONY : help
 
 

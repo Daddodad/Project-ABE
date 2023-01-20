@@ -57,27 +57,27 @@ include CMakeFiles/cp-abe-two-phase.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cp-abe-two-phase.dir/flags.make
 
-CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.o: CMakeFiles/cp-abe-two-phase.dir/flags.make
-CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.o: ../src/cp-abe-two-phase.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.o -c /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/cp-abe-two-phase.cpp
+CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.o: CMakeFiles/cp-abe-two-phase.dir/flags.make
+CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.o: ../src/main/cp-abe-two-phase.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.o -c /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/main/cp-abe-two-phase.cpp
 
-CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/cp-abe-two-phase.cpp > CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.i
+CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/main/cp-abe-two-phase.cpp > CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.i
 
-CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/cp-abe-two-phase.cpp -o CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.s
+CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/main/cp-abe-two-phase.cpp -o CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.s
 
 # Object files for target cp-abe-two-phase
 cp__abe__two__phase_OBJECTS = \
-"CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.o"
+"CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.o"
 
 # External object files for target cp-abe-two-phase
 cp__abe__two__phase_EXTERNAL_OBJECTS =
 
-cp-abe-two-phase: CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.o
+cp-abe-two-phase: CMakeFiles/cp-abe-two-phase.dir/src/main/cp-abe-two-phase.cpp.o
 cp-abe-two-phase: CMakeFiles/cp-abe-two-phase.dir/build.make
 cp-abe-two-phase: /usr/local/lib/libPALISADEabe.so.1.11.0
 cp-abe-two-phase: /usr/local/lib/libPALISADEpke.so.1.11.9

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.o"
+  "CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.o"
   "cpa-abe"
   "cpa-abe.pdb"
 )

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ibe.dir/src/ibe.cpp.o"
+  "CMakeFiles/ibe.dir/src/main/ibe.cpp.o"
   "ibe"
   "ibe.pdb"
 )

@@ -26,6 +26,6 @@
 
 using namespace lbcrypto;
 int main() {
-    std::cout << "Ring size: " << GetTrapdoorParams()->GetElemParams() << std::endl;
+    //std::cout << "Ring size: " << GetTrapdoorParams()->GetElemParams() << std::endl;
   
 }

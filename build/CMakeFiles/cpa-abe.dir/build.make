@@ -57,27 +57,27 @@ include CMakeFiles/cpa-abe.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cpa-abe.dir/flags.make
 
-CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.o: CMakeFiles/cpa-abe.dir/flags.make
-CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.o: ../src/cpa-abe.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.o -c /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/cpa-abe.cpp
+CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.o: CMakeFiles/cpa-abe.dir/flags.make
+CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.o: ../src/main/cpa-abe.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.o -c /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/main/cpa-abe.cpp
 
-CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/cpa-abe.cpp > CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.i
+CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/main/cpa-abe.cpp > CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.i
 
-CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/cpa-abe.cpp -o CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.s
+CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/main/cpa-abe.cpp -o CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.s
 
 # Object files for target cpa-abe
 cpa__abe_OBJECTS = \
-"CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.o"
+"CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.o"
 
 # External object files for target cpa-abe
 cpa__abe_EXTERNAL_OBJECTS =
 
-cpa-abe: CMakeFiles/cpa-abe.dir/src/cpa-abe.cpp.o
+cpa-abe: CMakeFiles/cpa-abe.dir/src/main/cpa-abe.cpp.o
 cpa-abe: CMakeFiles/cpa-abe.dir/build.make
 cpa-abe: /usr/local/lib/libPALISADEabe.so.1.11.0
 cpa-abe: /usr/local/lib/libPALISADEpke.so.1.11.9
