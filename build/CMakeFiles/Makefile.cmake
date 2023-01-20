@@ -50,5 +50,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ibe.dir/DependInfo.cmake"
+  "CMakeFiles/cp-abe-two-phase.dir/DependInfo.cmake"
   "CMakeFiles/cpa-abe.dir/DependInfo.cmake"
   )

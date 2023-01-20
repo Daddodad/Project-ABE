@@ -124,6 +124,19 @@ ibe/fast:
 .PHONY : ibe/fast
 
 #=============================================================================
+# Target rules for targets named cp-abe-two-phase
+
+# Build rule for target.
+cp-abe-two-phase: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cp-abe-two-phase
+.PHONY : cp-abe-two-phase
+
+# fast build rule for target.
+cp-abe-two-phase/fast:
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/build
+.PHONY : cp-abe-two-phase/fast
+
+#=============================================================================
 # Target rules for targets named cpa-abe
 
 # Build rule for target.
@@ -135,6 +148,33 @@ cpa-abe: cmake_check_build_system
 cpa-abe/fast:
 	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/build
 .PHONY : cpa-abe/fast
+
+src/cp-abe-two-phase.o: src/cp-abe-two-phase.cpp.o
+
+.PHONY : src/cp-abe-two-phase.o
+
+# target to build an object file
+src/cp-abe-two-phase.cpp.o:
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.o
+.PHONY : src/cp-abe-two-phase.cpp.o
+
+src/cp-abe-two-phase.i: src/cp-abe-two-phase.cpp.i
+
+.PHONY : src/cp-abe-two-phase.i
+
+# target to preprocess a source file
+src/cp-abe-two-phase.cpp.i:
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.i
+.PHONY : src/cp-abe-two-phase.cpp.i
+
+src/cp-abe-two-phase.s: src/cp-abe-two-phase.cpp.s
+
+.PHONY : src/cp-abe-two-phase.s
+
+# target to generate assembly for a file
+src/cp-abe-two-phase.cpp.s:
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/src/cp-abe-two-phase.cpp.s
+.PHONY : src/cp-abe-two-phase.cpp.s
 
 src/cpa-abe.o: src/cpa-abe.cpp.o
 
@@ -199,7 +239,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ibe"
+	@echo "... cp-abe-two-phase"
 	@echo "... cpa-abe"
+	@echo "... src/cp-abe-two-phase.o"
+	@echo "... src/cp-abe-two-phase.i"
+	@echo "... src/cp-abe-two-phase.s"
 	@echo "... src/cpa-abe.o"
 	@echo "... src/cpa-abe.i"
 	@echo "... src/cpa-abe.s"

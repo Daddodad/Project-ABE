@@ -38,5 +38,6 @@ link_libraries(PALISADEabe ${PALISADE_LIBRARIES} )
 ### EXAMPLE:
 ### add_executable( example example.cpp )
 add_executable( cpa-abe src/cpa-abe.cpp )
+add_executable( cp-abe-two-phase src/cp-abe-two-phase.cpp )
 add_executable( ibe src/ibe.cpp )
 

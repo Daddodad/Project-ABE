@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build
 
 # The main recursive "all" target.
 all: CMakeFiles/ibe.dir/all
+all: CMakeFiles/cp-abe-two-phase.dir/all
 all: CMakeFiles/cpa-abe.dir/all
 
 .PHONY : all
@@ -65,6 +66,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/ibe.dir/clean
+clean: CMakeFiles/cp-abe-two-phase.dir/clean
 clean: CMakeFiles/cpa-abe.dir/clean
 
 .PHONY : clean
@@ -76,7 +78,7 @@ clean: CMakeFiles/cpa-abe.dir/clean
 CMakeFiles/ibe.dir/all:
 	$(MAKE) -f CMakeFiles/ibe.dir/build.make CMakeFiles/ibe.dir/depend
 	$(MAKE) -f CMakeFiles/ibe.dir/build.make CMakeFiles/ibe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles --progress-num=3,4 "Built target ibe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles --progress-num=5,6 "Built target ibe"
 .PHONY : CMakeFiles/ibe.dir/all
 
 # Build rule for subdir invocation for target.
@@ -97,13 +99,40 @@ CMakeFiles/ibe.dir/clean:
 .PHONY : CMakeFiles/ibe.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/cp-abe-two-phase.dir
+
+# All Build rule for target.
+CMakeFiles/cp-abe-two-phase.dir/all:
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/depend
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles --progress-num=1,2 "Built target cp-abe-two-phase"
+.PHONY : CMakeFiles/cp-abe-two-phase.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/cp-abe-two-phase.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cp-abe-two-phase.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles 0
+.PHONY : CMakeFiles/cp-abe-two-phase.dir/rule
+
+# Convenience name for target.
+cp-abe-two-phase: CMakeFiles/cp-abe-two-phase.dir/rule
+
+.PHONY : cp-abe-two-phase
+
+# clean rule for target.
+CMakeFiles/cp-abe-two-phase.dir/clean:
+	$(MAKE) -f CMakeFiles/cp-abe-two-phase.dir/build.make CMakeFiles/cp-abe-two-phase.dir/clean
+.PHONY : CMakeFiles/cp-abe-two-phase.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/cpa-abe.dir
 
 # All Build rule for target.
 CMakeFiles/cpa-abe.dir/all:
 	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/depend
 	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles --progress-num=1,2 "Built target cpa-abe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles --progress-num=3,4 "Built target cpa-abe"
 .PHONY : CMakeFiles/cpa-abe.dir/all
 
 # Build rule for subdir invocation for target.
