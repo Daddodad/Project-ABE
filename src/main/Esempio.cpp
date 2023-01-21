@@ -21,6 +21,7 @@
 
 
 using namespace lbcrypto;
+//using namespace std;
 
 int main() {
     usint a;
@@ -45,18 +46,37 @@ int main() {
     Matrix<NativePoly> test;
 
     contesto.Setup(&mpk, &msk);
+    
 
+    std::fstream my_file;
+	my_file.open("../src/files/msk.txt", ios::out);
+	if (!my_file) {
+		cout << "File not created!";
+	}
+	else {
+		cout << "File created successfully!";
+        my_file << mpk.getA();
+		my_file.close(); 
+	}
+    
+
+    /*
     std::vector<usint> attributi(6);
     std::vector<int> access_policy(6);
+    */
 
-std::ifstream f;
-f.open("Access_Policy.txt");
-std::string my_string;
+    /*
+    std::fstream file;
+    file.open("../src/files/Access_Policy.txt");
+    if (!file) {
+		std::cout << "File not created!";
+	}
 
-f >> my_string;
-    std::cout << "ddd" << my_string << std::endl;
-
-    //ofstream out("out.txt")
+    std::string my_string;
+    int x;
+    file >> my_string >> x;
+    std::cout << "ddd" << my_string << x << std::endl;
+    */
 
     //test=mpk.GetA();
     //std::cout << test << std::endl;
