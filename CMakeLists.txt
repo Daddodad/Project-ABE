@@ -41,5 +41,6 @@ add_executable( cpa-abe src/main/cpa-abe.cpp )
 add_executable( cp-abe-two-phase src/main/cp-abe-two-phase.cpp )
 add_executable( ibe src/main/ibe.cpp )
 add_executable( Esempio src/main/Esempio.cpp )
+add_executable( Es2 src/main/Es2.cpp )
  #add_executable( abecontextzzg src/lib/abecontextzzg.cpp )
 

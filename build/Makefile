@@ -150,6 +150,19 @@ cp-abe-two-phase/fast:
 .PHONY : cp-abe-two-phase/fast
 
 #=============================================================================
+# Target rules for targets named Es2
+
+# Build rule for target.
+Es2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Es2
+.PHONY : Es2
+
+# fast build rule for target.
+Es2/fast:
+	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/build
+.PHONY : Es2/fast
+
+#=============================================================================
 # Target rules for targets named cpa-abe
 
 # Build rule for target.
@@ -161,6 +174,33 @@ cpa-abe: cmake_check_build_system
 cpa-abe/fast:
 	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/build
 .PHONY : cpa-abe/fast
+
+src/main/Es2.o: src/main/Es2.cpp.o
+
+.PHONY : src/main/Es2.o
+
+# target to build an object file
+src/main/Es2.cpp.o:
+	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/src/main/Es2.cpp.o
+.PHONY : src/main/Es2.cpp.o
+
+src/main/Es2.i: src/main/Es2.cpp.i
+
+.PHONY : src/main/Es2.i
+
+# target to preprocess a source file
+src/main/Es2.cpp.i:
+	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/src/main/Es2.cpp.i
+.PHONY : src/main/Es2.cpp.i
+
+src/main/Es2.s: src/main/Es2.cpp.s
+
+.PHONY : src/main/Es2.s
+
+# target to generate assembly for a file
+src/main/Es2.cpp.s:
+	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/src/main/Es2.cpp.s
+.PHONY : src/main/Es2.cpp.s
 
 src/main/Esempio.o: src/main/Esempio.cpp.o
 
@@ -281,7 +321,11 @@ help:
 	@echo "... Esempio"
 	@echo "... ibe"
 	@echo "... cp-abe-two-phase"
+	@echo "... Es2"
 	@echo "... cpa-abe"
+	@echo "... src/main/Es2.o"
+	@echo "... src/main/Es2.i"
+	@echo "... src/main/Es2.s"
 	@echo "... src/main/Esempio.o"
 	@echo "... src/main/Esempio.i"
 	@echo "... src/main/Esempio.s"

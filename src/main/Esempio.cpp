@@ -5,6 +5,7 @@
 #include <memory>
 #include <vector>
 
+/*
 #include "encoding/plaintextfactory.h"
 #include "lattice/elemparams.h"
 #include "lattice/ildcrtparams.h"
@@ -14,6 +15,7 @@
 #include "math/backend.h"
 #include "math/distrgen.h"
 #include "utils/inttypes.h"
+*/
 
 #include <iostream>
 #include <fstream>
@@ -32,7 +34,7 @@ int main() {
     std::cout << "b:" << b << std::endl;
 
     unsigned int ringsize=1024; //dimensione dello spazio?
-    unsigned int base=64; //boh
+    unsigned int base=32; //boh
     unsigned int numAttributi=6; //questo è chiaro
     ABEContext<NativePoly> contesto; //creo la variabile contesto
     contesto.GenerateCPABEContext(numAttributi, ringsize, base);
@@ -43,13 +45,20 @@ int main() {
     CPABEMasterPublicKey<NativePoly> mpk;
     CPABEMasterSecretKey<NativePoly> msk;
 
-    Matrix<NativePoly> test;
-
     contesto.Setup(&mpk, &msk);
-    
 
+    /*
+    Matrix<NativePoly> test;
+    test=mpk.GetA();
+    std::cout << test << std::endl;
+    */
+    size_t rows=0;
+    std::cout << mpk.GetA().ExtractRow(rows).ExtractRow(rows).ExtractCol(rows).ExtractRow(rows) << "\n\n\n";
+    
+    
+    
     std::fstream my_file;
-	my_file.open("../src/files/msk.txt", std::ios::out);
+	my_file.open("../src/files/mpk.txt", std::ios::out);
 	if (!my_file) {
 		std::cout << "File not created!\n";
 	}
@@ -60,20 +69,22 @@ int main() {
 	}
     
     //separo//
+
     CPABEMasterPublicKey<NativePoly> test_mpk;
-    my_file.open("../src/files/my_file.txt", std::ios::in);
+    Matrix<NativePoly> test_A;
+    my_file.open("../src/files/mpk.txt", std::ios::in);
     if (!my_file) {
 		std::cout << "File not opened!\n";
 	}
 	else {
 		std::cout << "File opened successfully!\n";
-        my_file >> test_mpk;
+        //my_file >> test_A;
 		my_file.close(); 
 	}
-    /*
+    
     std::vector<usint> attributi(6);
     std::vector<int> access_policy(6);
-    */
+ 
 
     /*
     std::fstream file;
@@ -88,8 +99,7 @@ int main() {
     std::cout << "ddd" << my_string << x << std::endl;
     */
 
-    //test=mpk.GetA();
-    //std::cout << test << std::endl;
+
 
 return 0;
 }
