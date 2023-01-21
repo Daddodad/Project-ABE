@@ -2,10 +2,9 @@
 
 namespace lbcrypto {
 
-
 template <class Element>
-void ABEContextZZG<Element>::Stampa_cia(){
-    std::cout << "cciaooo:" << std::endl;
+void ABEContextZZG<Element>::Stampa_ciao(shared_ptr<ABEContextParams<Element>> cm_params){
+    //std::cout << "cciaooo:" << std::endl;
 }
 
 }  // namespace lbcrypto
