@@ -8,6 +8,7 @@
 #include "cpabe.h"
 #include "ibe.h"
 #include "abecontext.h"
+#include "abecore.h"
 
 namespace lbcrypto {
 /**
@@ -17,7 +18,12 @@ namespace lbcrypto {
 template <class Element>
 class ABEContextZZG : public ABEContext<Element> {
  public:
- void Stampa_cia();
+    //Distruttore di Default
+    ~ABEContextZZG() {}
+    //Costruttore di Default
+    ABEContextZZG() {}
+
+    void Stampa_ciao();
 
 }  // namespace lbcrypto
 
