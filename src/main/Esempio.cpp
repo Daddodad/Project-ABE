@@ -49,17 +49,27 @@ int main() {
     
 
     std::fstream my_file;
-	my_file.open("../src/files/msk.txt", ios::out);
+	my_file.open("../src/files/msk.txt", std::ios::out);
 	if (!my_file) {
-		cout << "File not created!";
+		std::cout << "File not created!\n";
 	}
 	else {
-		cout << "File created successfully!";
-        my_file << mpk.getA();
+		std::cout << "File created successfully!\n";
+        my_file << mpk.GetA();
 		my_file.close(); 
 	}
     
-
+    //separo//
+    CPABEMasterPublicKey<NativePoly> test_mpk;
+    my_file.open("../src/files/my_file.txt", std::ios::in);
+    if (!my_file) {
+		std::cout << "File not opened!\n";
+	}
+	else {
+		std::cout << "File opened successfully!\n";
+        my_file >> test_mpk;
+		my_file.close(); 
+	}
     /*
     std::vector<usint> attributi(6);
     std::vector<int> access_policy(6);
