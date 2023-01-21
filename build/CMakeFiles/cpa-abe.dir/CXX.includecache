@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/cpa-abe.cpp
+/home/daddodad/Scrivania/P/src/main/cpa-abe.cpp
 abecontext.h
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/abecontext.h
+/home/daddodad/Scrivania/P/src/main/abecontext.h
 
 /usr/local/include/palisade-abe/abecontext.h
 memory

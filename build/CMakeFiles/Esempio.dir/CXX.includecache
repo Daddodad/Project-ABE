@@ -6,9 +6,43 @@
 
 #IncludeRegexTransform: 
 
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/Esempio.cpp
+/home/daddodad/Scrivania/P/src/main/Esempio.cpp
 abecontext.h
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/abecontext.h
+/home/daddodad/Scrivania/P/src/main/abecontext.h
+cpabe.h
+/home/daddodad/Scrivania/P/src/main/cpabe.h
+abecore.h
+/home/daddodad/Scrivania/P/src/main/abecore.h
+cmath
+-
+memory
+-
+vector
+-
+encoding/plaintextfactory.h
+/home/daddodad/Scrivania/P/src/main/encoding/plaintextfactory.h
+lattice/elemparams.h
+/home/daddodad/Scrivania/P/src/main/lattice/elemparams.h
+lattice/ildcrtparams.h
+/home/daddodad/Scrivania/P/src/main/lattice/ildcrtparams.h
+lattice/ilelement.h
+/home/daddodad/Scrivania/P/src/main/lattice/ilelement.h
+lattice/ilparams.h
+/home/daddodad/Scrivania/P/src/main/lattice/ilparams.h
+lattice/trapdoorparameters.h
+/home/daddodad/Scrivania/P/src/main/lattice/trapdoorparameters.h
+math/backend.h
+/home/daddodad/Scrivania/P/src/main/math/backend.h
+math/distrgen.h
+/home/daddodad/Scrivania/P/src/main/math/distrgen.h
+utils/inttypes.h
+/home/daddodad/Scrivania/P/src/main/utils/inttypes.h
+iostream
+-
+fstream
+-
+string
+-
 
 /usr/local/include/palisade-abe/abecontext.h
 memory
