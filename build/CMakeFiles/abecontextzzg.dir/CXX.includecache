@@ -6,23 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/lib/abecontextzzg.cpp
+/home/daddodad/Scrivania/P/src/lib/abecontextzzg.cpp
 abecontextzzg.h
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/lib/abecontextzzg.h
+/home/daddodad/Scrivania/P/src/lib/abecontextzzg.h
 
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/lib/abecontextzzg.h
+/home/daddodad/Scrivania/P/src/lib/abecontextzzg.h
 memory
 -
 vector
 -
 abeparamset.h
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/lib/abeparamset.h
+/home/daddodad/Scrivania/P/src/lib/abeparamset.h
 cpabe.h
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/lib/cpabe.h
+/home/daddodad/Scrivania/P/src/lib/cpabe.h
 ibe.h
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/lib/ibe.h
+/home/daddodad/Scrivania/P/src/lib/ibe.h
 abecontext.h
-/home/daddodad/Scrivania/Progetto-CR410/Project-ABE/src/lib/abecontext.h
+/home/daddodad/Scrivania/P/src/lib/abecontext.h
+abecore.h
+/home/daddodad/Scrivania/P/src/lib/abecore.h
 
 /usr/local/include/palisade-abe/abecontext.h
 memory

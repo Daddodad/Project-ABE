@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daddodad/Scrivania/Progetto-CR410/Project-ABE
+CMAKE_SOURCE_DIR = /home/daddodad/Scrivania/P
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build
+CMAKE_BINARY_DIR = /home/daddodad/Scrivania/P/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/P/build/CMakeFiles /home/daddodad/Scrivania/P/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/Progetto-CR410/Project-ABE/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/P/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -109,19 +109,6 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named abecontextzzg
-
-# Build rule for target.
-abecontextzzg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 abecontextzzg
-.PHONY : abecontextzzg
-
-# fast build rule for target.
-abecontextzzg/fast:
-	$(MAKE) -f CMakeFiles/abecontextzzg.dir/build.make CMakeFiles/abecontextzzg.dir/build
-.PHONY : abecontextzzg/fast
 
 #=============================================================================
 # Target rules for targets named Esempio
@@ -174,33 +161,6 @@ cpa-abe: cmake_check_build_system
 cpa-abe/fast:
 	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/build
 .PHONY : cpa-abe/fast
-
-src/lib/abecontextzzg.o: src/lib/abecontextzzg.cpp.o
-
-.PHONY : src/lib/abecontextzzg.o
-
-# target to build an object file
-src/lib/abecontextzzg.cpp.o:
-	$(MAKE) -f CMakeFiles/abecontextzzg.dir/build.make CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.o
-.PHONY : src/lib/abecontextzzg.cpp.o
-
-src/lib/abecontextzzg.i: src/lib/abecontextzzg.cpp.i
-
-.PHONY : src/lib/abecontextzzg.i
-
-# target to preprocess a source file
-src/lib/abecontextzzg.cpp.i:
-	$(MAKE) -f CMakeFiles/abecontextzzg.dir/build.make CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.i
-.PHONY : src/lib/abecontextzzg.cpp.i
-
-src/lib/abecontextzzg.s: src/lib/abecontextzzg.cpp.s
-
-.PHONY : src/lib/abecontextzzg.s
-
-# target to generate assembly for a file
-src/lib/abecontextzzg.cpp.s:
-	$(MAKE) -f CMakeFiles/abecontextzzg.dir/build.make CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.s
-.PHONY : src/lib/abecontextzzg.cpp.s
 
 src/main/Esempio.o: src/main/Esempio.cpp.o
 
@@ -318,14 +278,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... abecontextzzg"
 	@echo "... Esempio"
 	@echo "... ibe"
 	@echo "... cp-abe-two-phase"
 	@echo "... cpa-abe"
-	@echo "... src/lib/abecontextzzg.o"
-	@echo "... src/lib/abecontextzzg.i"
-	@echo "... src/lib/abecontextzzg.s"
 	@echo "... src/main/Esempio.o"
 	@echo "... src/main/Esempio.i"
 	@echo "... src/main/Esempio.s"
