@@ -37,6 +37,10 @@ math/distrgen.h
 /home/daddodad/Scrivania/P/src/main/math/distrgen.h
 utils/inttypes.h
 /home/daddodad/Scrivania/P/src/main/utils/inttypes.h
+iostream
+-
+fstream
+-
 
 /usr/local/include/palisade-abe/abecontext.h
 memory
