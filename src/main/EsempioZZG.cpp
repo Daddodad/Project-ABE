@@ -10,9 +10,12 @@
 #include "../lib/abecontextzzg.h"
 
 using namespace lbcrypto;
-//using namespace std;
+using namespace std;
 
 int main() {
+
+ABEContextZZG<NativePoly> context;
+context.Stampa_Ciao();
     
 return 0;
 }

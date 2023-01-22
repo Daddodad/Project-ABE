@@ -10,21 +10,22 @@
 #include "abecontext.h"
 #include "abecore.h"
 
-namespace lbcrypto {
+//namespace lbcrypto {
 /**
  *@brief Context class for ABE schemes, including IBE and CPABE
  *@tparam Element ring element
  */
 template <class Element>
-class ABEContextZZG : public ABEContext<Element> {
+class ABEContextZZG {
  public:
     //Distruttore di Default
     ~ABEContextZZG() {}
     //Costruttore di Default
     ABEContextZZG() {}
 
-    void Stampa_ciao();
+    void Stampa_Ciao();
+};
 
-}  // namespace lbcrypto
+//}  // namespace lbcrypto
 
 #endif

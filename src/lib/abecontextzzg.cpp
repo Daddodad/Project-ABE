@@ -1,10 +1,11 @@
 #include "abecontextzzg.h"
 
-namespace lbcrypto {
+//namespace lbcrypto {
 
 template <class Element>
-void ABEContextZZG<Element>::Stampa_ciao(shared_ptr<ABEContextParams<Element>> cm_params){
+
+void ABEContextZZG<Element>::Stampa_ciao(){
     std::cout << "cciaooo:" << std::endl;
 }
 
-}  // namespace lbcrypto
+//}  // namespace lbcrypto
