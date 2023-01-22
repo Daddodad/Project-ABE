@@ -19,6 +19,21 @@
 using namespace lbcrypto;
 int main() {
 
+
+unsigned int ringsize=1024; //dimensione dello spazio?
+unsigned int base=64; //boh
+unsigned int numAttributi=6; //questo è chiaro
+ABEContext<NativePoly> contesto; //creo la variabile contesto
+contesto.GenerateCPABEContext(numAttributi, ringsize, base);
+
+std::cout << "Genero master secret key e master public key" << std::endl;
+// Generate master keys
+
+CPABEMasterPublicKey<NativePoly> mpk;
+CPABEMasterSecretKey<NativePoly> msk;
+
+contesto.Setup(&mpk, &msk);
+
     size_t rows=5;
     size_t cols=5;
     Matrix<int64_t> test([]() { return 0; }, rows, cols);

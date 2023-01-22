@@ -34,7 +34,7 @@ int main() {
     std::cout << "b:" << b << std::endl;
 
     unsigned int ringsize=1024; //dimensione dello spazio?
-    unsigned int base=32; //boh
+    unsigned int base=64; //boh
     unsigned int numAttributi=6; //questo è chiaro
     ABEContext<NativePoly> contesto; //creo la variabile contesto
     contesto.GenerateCPABEContext(numAttributi, ringsize, base);
