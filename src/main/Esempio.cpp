@@ -20,7 +20,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include "lattice/poly.h"
 
 using namespace lbcrypto;
 //using namespace std;
@@ -33,11 +33,11 @@ int main() {
     std::cout << "a:" << a << std::endl;
     std::cout << "b:" << b << std::endl;
 
-    unsigned int ringsize=1024; //dimensione dello spazio?
+    unsigned int ringsize=1024; //dimensione dello spazio? buffer
     unsigned int base=64; //boh
     unsigned int numAttributi=6; //questo è chiaro
-    ABEContext<NativePoly> contesto; //creo la variabile contesto
-    contesto.GenerateCPABEContext(numAttributi, ringsize, base);
+    ABEContext<NativePoly> context; //creo la variabile context
+    context.GenerateCPABEContext(numAttributi, ringsize, base);
 
     std::cout << "Genero master secret key e master public key" << std::endl;
     // Generate master keys
@@ -45,10 +45,10 @@ int main() {
     CPABEMasterPublicKey<NativePoly> mpk;
     CPABEMasterSecretKey<NativePoly> msk;
 
-    contesto.Setup(&mpk, &msk);
+    context.Setup(&mpk, &msk);
 
     // Lettura da file della Access Policy
-    std::vector<int> w(6);
+    std::vector<int> w(numAttributi);
 
     std::fstream file;
     file.open("../src/files/Access_Policy.txt", std::ios::in);
@@ -66,7 +66,7 @@ int main() {
     }
 
     // Lettura da file della Attribute List
-    std::vector<usint> s(6);
+    std::vector<usint> s(numAttributi);
 
     file.open("../src/files//User_Attribute_List.txt", std::ios::in);
     if (!file) {
@@ -81,6 +81,52 @@ int main() {
         std::cout << "s: " << s << std::endl;
         file.close();
     }
+
+    // Carico le informazioni di Access Policy e User Attribute List su delle classi apposite 
+    CPABEUserAccess<NativePoly> ua(s);
+    CPABEAccessPolicy<NativePoly> ap(w);
+
+    // Creiamo l'oggetto corrispondente alla key associata a tale access policy
+    CPABESecretKey<NativePoly> sk;
+    // Genero tale chiave usando il metodo della classe ABEContext
+    context.KeyGen(msk, mpk, ua, &sk);
+
+    // Leggo un plaintext da file
+    std::vector<int64_t> vectorOfInts;
+    file.open("../src/files//Plaintext_01.txt", std::ios::in);
+    if (!file) {
+		std::cout << "File not opened!";
+	}
+    else {
+        int i;
+        while(file >> i)
+            vectorOfInts.push_back(i);
+        std::cout << "Plaintext: " << vectorOfInts << std::endl;
+        file.close();
+    }
+    //trasformo il vettore di bit in una variabile plaintext
+    Plaintext pt = context.MakeCoefPackedPlaintext(vectorOfInts);
+
+    // Encrypt the plaintext
+    std::cout << "Codifico il plaintext sotto la Access Policy" << std::endl;
+    
+    // creo una variabile ciphertext dove andare a salvare il ct 
+    CPABECiphertext<NativePoly> ct;
+
+    // Genero il ciphertext
+    context.Encrypt(mpk, ap, pt, &ct);
+
+    // Decrypt the ciphertext
+    std::cout << "Decritto il ciphertext" << std::endl;
+    Plaintext dt = context.Decrypt(ap, ua, sk, ct);
+    std::cout << "test";
+    std::cout << "Il Plaintext è" << dt->GetElement<NativePoly>() << "\n";
+
+
+
+
+
+    
 
 
 return 0;
