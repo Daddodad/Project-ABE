@@ -36,10 +36,16 @@ CPABEMasterPublicKey<NativePoly> mpk;
 CPABEMasterSecretKey<NativePoly> msk;
 
 contesto.Setup(&mpk, &msk);
+//Matrix<NativePoly> matrice(1,9);
 
-std::cout << mpk.GetA().ExtractCol(0);
+std::vector<usint> attributi(6);
+std::vector<int> access_policy(6);
+
+//matrice.SetSize(1,9);
+//std::cout << mpk.GetA().GetAllocator();
 
 NativePoly pippo=contesto.GenerateRandomElement();
+//matrice.HStack(pippo);
 NativePoly franco;
 //std::cout << pippo[0];
 //std::cout << pippo.SwitchFormat();

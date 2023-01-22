@@ -47,58 +47,40 @@ int main() {
 
     contesto.Setup(&mpk, &msk);
 
-    /*
-    Matrix<NativePoly> test;
-    test=mpk.GetA();
-    std::cout << test << std::endl;
-    */
-    size_t rows=0;
-    std::cout << mpk.GetA().ExtractRow(rows).ExtractRow(rows).ExtractCol(rows).ExtractRow(rows) << "\n\n\n";
-    
-    
-    
-    std::fstream my_file;
-	my_file.open("../src/files/mpk.txt", std::ios::out);
-	if (!my_file) {
-		std::cout << "File not created!\n";
-	}
-	else {
-		std::cout << "File created successfully!\n";
-        my_file << mpk.GetA();
-		my_file.close(); 
-	}
-    
-    //separo//
+    // Lettura da file della Access Policy
+    std::vector<int> w(6);
 
-    CPABEMasterPublicKey<NativePoly> test_mpk;
-    Matrix<NativePoly> test_A;
-    my_file.open("../src/files/mpk.txt", std::ios::in);
-    if (!my_file) {
-		std::cout << "File not opened!\n";
-	}
-	else {
-		std::cout << "File opened successfully!\n";
-        //my_file >> test_A;
-		my_file.close(); 
-	}
-    
-    std::vector<usint> attributi(6);
-    std::vector<int> access_policy(6);
- 
-
-    /*
     std::fstream file;
-    file.open("../src/files/Access_Policy.txt");
+    file.open("../src/files/Access_Policy.txt", std::ios::in);
     if (!file) {
-		std::cout << "File not created!";
+		std::cout << "File not opened!";
 	}
+    else {
+        int i=0;
+        while (file.good()) {
+            file >> w[i];
+            i++;
+        }
+        std::cout << "w: " << w << std::endl;
+        file.close();
+    }
 
-    std::string my_string;
-    int x;
-    file >> my_string >> x;
-    std::cout << "ddd" << my_string << x << std::endl;
-    */
+    // Lettura da file della Attribute List
+    std::vector<usint> s(6);
 
+    file.open("../src/files//User_Attribute_List.txt", std::ios::in);
+    if (!file) {
+		std::cout << "File not opened!";
+	}
+    else {
+        int i=0;
+        while (file.good()) {
+            file >> s[i];
+            i++;
+        }
+        std::cout << "s: " << s << std::endl;
+        file.close();
+    }
 
 
 return 0;
