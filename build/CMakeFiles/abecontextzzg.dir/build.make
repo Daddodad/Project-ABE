@@ -57,27 +57,27 @@ include CMakeFiles/abecontextzzg.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/abecontextzzg.dir/flags.make
 
-CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.o: CMakeFiles/abecontextzzg.dir/flags.make
-CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.o: ../src/lib/abecontextzzg.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddodad/Scrivania/P/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.o -c /home/daddodad/Scrivania/P/src/lib/abecontextzzg.cpp
+CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.o: CMakeFiles/abecontextzzg.dir/flags.make
+CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.o: ../src/lib/cpabe2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daddodad/Scrivania/P/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.o -c /home/daddodad/Scrivania/P/src/lib/cpabe2.cpp
 
-CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddodad/Scrivania/P/src/lib/abecontextzzg.cpp > CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.i
+CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daddodad/Scrivania/P/src/lib/cpabe2.cpp > CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.i
 
-CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddodad/Scrivania/P/src/lib/abecontextzzg.cpp -o CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.s
+CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daddodad/Scrivania/P/src/lib/cpabe2.cpp -o CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.s
 
 # Object files for target abecontextzzg
 abecontextzzg_OBJECTS = \
-"CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.o"
+"CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.o"
 
 # External object files for target abecontextzzg
 abecontextzzg_EXTERNAL_OBJECTS =
 
-abecontextzzg: CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.o
+abecontextzzg: CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.o
 abecontextzzg: CMakeFiles/abecontextzzg.dir/build.make
 abecontextzzg: /usr/local/lib/libPALISADEabe.so.1.11.0
 abecontextzzg: /usr/local/lib/libPALISADEpke.so.1.11.9
