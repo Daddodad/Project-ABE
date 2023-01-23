@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/daddodad/Scrivania/P/src/main/Esempio.cpp
+/home/daddodad/Scrivania/P/src/main/Es2.cpp
 abecontext.h
 /home/daddodad/Scrivania/P/src/main/abecontext.h
 cpabe.h
@@ -41,10 +41,6 @@ iostream
 -
 fstream
 -
-string
--
-lattice/poly.h
-/home/daddodad/Scrivania/P/src/main/lattice/poly.h
 
 /usr/local/include/palisade-abe/abecontext.h
 memory

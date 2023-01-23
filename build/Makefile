@@ -150,6 +150,32 @@ cp-abe-two-phase/fast:
 .PHONY : cp-abe-two-phase/fast
 
 #=============================================================================
+# Target rules for targets named EsempioZZG
+
+# Build rule for target.
+EsempioZZG: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 EsempioZZG
+.PHONY : EsempioZZG
+
+# fast build rule for target.
+EsempioZZG/fast:
+	$(MAKE) -f CMakeFiles/EsempioZZG.dir/build.make CMakeFiles/EsempioZZG.dir/build
+.PHONY : EsempioZZG/fast
+
+#=============================================================================
+# Target rules for targets named Es2
+
+# Build rule for target.
+Es2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Es2
+.PHONY : Es2
+
+# fast build rule for target.
+Es2/fast:
+	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/build
+.PHONY : Es2/fast
+
+#=============================================================================
 # Target rules for targets named cpa-abe
 
 # Build rule for target.
@@ -161,6 +187,33 @@ cpa-abe: cmake_check_build_system
 cpa-abe/fast:
 	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/build
 .PHONY : cpa-abe/fast
+
+src/main/Es2.o: src/main/Es2.cpp.o
+
+.PHONY : src/main/Es2.o
+
+# target to build an object file
+src/main/Es2.cpp.o:
+	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/src/main/Es2.cpp.o
+.PHONY : src/main/Es2.cpp.o
+
+src/main/Es2.i: src/main/Es2.cpp.i
+
+.PHONY : src/main/Es2.i
+
+# target to preprocess a source file
+src/main/Es2.cpp.i:
+	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/src/main/Es2.cpp.i
+.PHONY : src/main/Es2.cpp.i
+
+src/main/Es2.s: src/main/Es2.cpp.s
+
+.PHONY : src/main/Es2.s
+
+# target to generate assembly for a file
+src/main/Es2.cpp.s:
+	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/src/main/Es2.cpp.s
+.PHONY : src/main/Es2.cpp.s
 
 src/main/Esempio.o: src/main/Esempio.cpp.o
 
@@ -188,6 +241,33 @@ src/main/Esempio.s: src/main/Esempio.cpp.s
 src/main/Esempio.cpp.s:
 	$(MAKE) -f CMakeFiles/Esempio.dir/build.make CMakeFiles/Esempio.dir/src/main/Esempio.cpp.s
 .PHONY : src/main/Esempio.cpp.s
+
+src/main/EsempioZZG.o: src/main/EsempioZZG.cpp.o
+
+.PHONY : src/main/EsempioZZG.o
+
+# target to build an object file
+src/main/EsempioZZG.cpp.o:
+	$(MAKE) -f CMakeFiles/EsempioZZG.dir/build.make CMakeFiles/EsempioZZG.dir/src/main/EsempioZZG.cpp.o
+.PHONY : src/main/EsempioZZG.cpp.o
+
+src/main/EsempioZZG.i: src/main/EsempioZZG.cpp.i
+
+.PHONY : src/main/EsempioZZG.i
+
+# target to preprocess a source file
+src/main/EsempioZZG.cpp.i:
+	$(MAKE) -f CMakeFiles/EsempioZZG.dir/build.make CMakeFiles/EsempioZZG.dir/src/main/EsempioZZG.cpp.i
+.PHONY : src/main/EsempioZZG.cpp.i
+
+src/main/EsempioZZG.s: src/main/EsempioZZG.cpp.s
+
+.PHONY : src/main/EsempioZZG.s
+
+# target to generate assembly for a file
+src/main/EsempioZZG.cpp.s:
+	$(MAKE) -f CMakeFiles/EsempioZZG.dir/build.make CMakeFiles/EsempioZZG.dir/src/main/EsempioZZG.cpp.s
+.PHONY : src/main/EsempioZZG.cpp.s
 
 src/main/cp-abe-two-phase.o: src/main/cp-abe-two-phase.cpp.o
 
@@ -281,10 +361,18 @@ help:
 	@echo "... Esempio"
 	@echo "... ibe"
 	@echo "... cp-abe-two-phase"
+	@echo "... EsempioZZG"
+	@echo "... Es2"
 	@echo "... cpa-abe"
+	@echo "... src/main/Es2.o"
+	@echo "... src/main/Es2.i"
+	@echo "... src/main/Es2.s"
 	@echo "... src/main/Esempio.o"
 	@echo "... src/main/Esempio.i"
 	@echo "... src/main/Esempio.s"
+	@echo "... src/main/EsempioZZG.o"
+	@echo "... src/main/EsempioZZG.i"
+	@echo "... src/main/EsempioZZG.s"
 	@echo "... src/main/cp-abe-two-phase.o"
 	@echo "... src/main/cp-abe-two-phase.i"
 	@echo "... src/main/cp-abe-two-phase.s"
