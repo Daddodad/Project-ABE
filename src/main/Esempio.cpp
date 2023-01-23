@@ -33,9 +33,9 @@ int main() {
     std::cout << "a:" << a << std::endl;
     std::cout << "b:" << b << std::endl;
 
-    unsigned int ringsize=1024; //dimensione dello spazio? buffer
-    unsigned int base=64; //boh
-    unsigned int numAttributi=6; //questo è chiaro
+    usint ringsize=1024; //dimensione dello spazio? buffer
+    usint base=64; //boh
+    usint numAttributi=6; //questo è chiaro
     ABEContext<NativePoly> context; //creo la variabile context
     context.GenerateCPABEContext(numAttributi, ringsize, base);
 

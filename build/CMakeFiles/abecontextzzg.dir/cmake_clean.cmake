@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/abecontextzzg.dir/src/lib/abecontextzzg.cpp.o"
+  "CMakeFiles/abecontextzzg.dir/src/lib/cpabe2.cpp.o"
   "abecontextzzg"
   "abecontextzzg.pdb"
 )
