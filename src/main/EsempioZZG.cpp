@@ -31,18 +31,14 @@ int main() {
     
     CPABEMasterPublicKey<NativePoly> mpk;
     CPABEMasterSecretKey<NativePoly> msk;
-	
+	/*
 	ABEContext<NativePoly> auxiliar;
-	ABECoreParams<NativePoly> parameters;
-	auxiliar.ParamsGenCPABE(ringsize, numAttributi, base, parameters);
+	shared_ptr<ABECoreParams<NativePoly>> parameters;
+	context.ParamsGenCPABEZZG(ringsize, numAttributi, base, parameters);
 	
     usint d=3;
-    context.Setup(parameters
-    
-    
-    
-    , d,&mpkZZG, &mskZZG, &mpk, &msk);
+    context.Setup(parameters, d,&mpkZZG, &mskZZG, &mpk, &msk);
     //std::cout << context.contextZZ.m_params->GetTrapdoorParams() << std::endl;
-    
+    */
 return 0;
 }

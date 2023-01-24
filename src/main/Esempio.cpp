@@ -36,6 +36,7 @@ int main() {
     usint ringsize=1024; //dimensione dello spazio? buffer
     usint base=64; //boh
     usint numAttributi=6; //questo è chiaro
+
     ABEContext<NativePoly> context; //creo la variabile context
     context.GenerateCPABEContext(numAttributi, ringsize, base);
 

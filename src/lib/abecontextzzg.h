@@ -109,35 +109,35 @@ class ABEContextZZG {
                    		CPABEMasterSecretKeyZZG<NativePoly>* mskZZG,
 				        CPABEMasterPublicKey<NativePoly>* mpk,
                    		CPABEMasterSecretKey<NativePoly>* msk) {
-		  auto m_params = std::static_pointer_cast<CPABEParams<Element>>(bm_params);
-		  //auto* mpk = static_cast<CPABEMasterPublicKey<Element>*>(bmpk);
-		  //auto* msk = static_cast<CPABEMasterSecretKey<Element>*>(bmsk);
+		 auto m_params = std::static_pointer_cast<CPABEParams<Element>>(bm_params);
+		 //auto* mpk = static_cast<CPABEMasterPublicKey<Element>*>(bmpk);
+		 //auto* msk = static_cast<CPABEMasterSecretKey<Element>*>(bmsk);
 
-		  typename Element::DugType& dug = m_params->GetDUG();
-		  usint m_N = m_params->GetTrapdoorParams()->GetN();
-		  usint m_ell = m_params->GetEll();
-		  usint m_m = m_params->GetTrapdoorParams()->GetK() + 2;
-		  auto zero_alloc = Element::Allocator(
+	     typename Element::DugType& dug = m_params->GetDUG();
+		 usint m_N = m_params->GetTrapdoorParams()->GetN(); //MconN 
+         usint m_ell = m_params->GetEll();
+		 usint m_m = m_params->GetTrapdoorParams()->GetK() + 2;
+		 auto zero_alloc = Element::Allocator(
 			  m_params->GetTrapdoorParams()->GetElemParams(), Format::COEFFICIENT);
 
-		  Matrix<Element> pubElemAi(zero_alloc, m_ell + dd, m_m);
-		  Element pubElemU(pubElemAi(0, 0));
+		 Matrix<Element> pubElemAi(zero_alloc, m_ell + dd, m_m);
+		 Element pubElemU(pubElemAi(0, 0));
 
-		  if (pubElemU.GetFormat() != Format::COEFFICIENT) pubElemU.SwitchFormat();
-		  // always sample in Format::COEFFICIENT format
-		  pubElemU.SetValues(dug.GenerateVector(m_N), Format::COEFFICIENT);
-		  pubElemU.SwitchFormat();  // always kept in Format::EVALUATION format
+		 if (pubElemU.GetFormat() != Format::COEFFICIENT) pubElemU.SwitchFormat();
+		 // always sample in Format::COEFFICIENT format
+		 pubElemU.SetValues(dug.GenerateVector(m_N), Format::COEFFICIENT);
+		 pubElemU.SwitchFormat();  // always kept in Format::EVALUATION format
 
-		  for (usint i = 0; i < pubElemAi.GetRows(); i++){
-			for (usint j = 0; j < pubElemAi.GetCols(); j++) {
-			  if ((pubElemAi)(i, j).GetFormat() != Format::COEFFICIENT)
-				(pubElemAi)(i, j).SwitchFormat();
-			  // always sample in Format::COEFFICIENT format
-			  (pubElemAi)(i, j).SetValues(dug.GenerateVector(m_N),
+		 for (usint i = 0; i < pubElemAi.GetRows(); i++){
+	        for (usint j = 0; j < pubElemAi.GetCols(); j++) {
+			    if ((pubElemAi)(i, j).GetFormat() != Format::COEFFICIENT)
+				    (pubElemAi)(i, j).SwitchFormat();
+			     // always sample in Format::COEFFICIENT format
+			    (pubElemAi)(i, j).SetValues(dug.GenerateVector(m_N),
 				                            Format::COEFFICIENT);
-			  // always kept in Format::EVALUATION format
-			  (pubElemAi)(i, j).SwitchFormat();
-			}
+			    // always kept in Format::EVALUATION format
+			     (pubElemAi)(i, j).SwitchFormat();
+			    }
 		  }
 
 
@@ -154,6 +154,7 @@ class ABEContextZZG {
 		}
 
 };
+
 }
 #endif
 
