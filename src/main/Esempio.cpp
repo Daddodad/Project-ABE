@@ -52,7 +52,7 @@ int main() {
     // Lettura da file della Attribute List
     std::vector<usint> s(numAttributi);
 
-    file.open("../src/files//User_Attribute_List.txt", std::ios::in);
+    file.open("../src/files/User_Attribute_List.txt", std::ios::in);
     if (!file) {
 		std::cout << "File not opened!";
 	}
@@ -72,6 +72,7 @@ int main() {
 
     // Creiamo l'oggetto corrispondente alla key associata a tale access policy
     CPABESecretKey<NativePoly> sk;
+
     // Genero tale chiave usando il metodo della classe ABEContext
     context.KeyGen(msk, mpk, ua, &sk);
 

@@ -82,10 +82,6 @@ class ABEContextZZG {
         int j;
         ABEContext<Element> contextZZ;
         usint d;
-
-        usint temprs;
-        usint tempell;  
-        usint tempbase;
     
         //Distruttore di Default
         ~ABEContextZZG() {}
@@ -99,18 +95,16 @@ class ABEContextZZG {
         return i+1;};
     
         void Setj(int jj) {j=jj;}
-        
+
+        void Setd(usint jj) {d=jj;}
+
         int Getj() {return j;}
 		
         void GenerateCPABEContextZZG(usint nelementi,usint ringsize,usint base) {
             contextZZ.GenerateCPABEContext(nelementi, ringsize, base);
-            temprs=ringsize;
-            tempbase=base;
-            tempell=nelementi;
         };
 
 		void Setup(shared_ptr<ABECoreParams<Element>> bm_params,
-				        usint dd,
 				        CPABEMasterPublicKeyZZG<NativePoly>* mpkZZG,
                    		CPABEMasterSecretKeyZZG<NativePoly>* mskZZG) {
     
@@ -123,7 +117,7 @@ class ABEContextZZG {
 		 auto zero_alloc = Element::Allocator(
 			  m_params->GetTrapdoorParams()->GetElemParams(), Format::COEFFICIENT);
 
-		 Matrix<Element> pubElemAi(zero_alloc, m_ell + dd, m_m);
+		 Matrix<Element> pubElemAi(zero_alloc, m_ell + d, m_m);
          Matrix<Element> pubElemB(zero_alloc,1,m_m);
 		 Element pubElemU(pubElemAi(0, 0));
 
@@ -172,6 +166,93 @@ class ABEContextZZG {
           mskZZG->mpk.A=keypair.first;
           mskZZG->mpk.B=pubElemB;
 		}
+
+        void KeyGenZZG(shared_ptr<ABECoreParams<Element>> bm_params,
+				        CPABEMasterPublicKeyZZG<NativePoly> mpkZZG,
+                   		CPABEMasterSecretKeyZZG<NativePoly> mskZZG,
+                        const CPABEUserAccess<Element>& id,
+                        CPABESecretKey<Element>* usk) {
+
+        auto m_params = std::static_pointer_cast<CPABEParams<Element>>(bm_params);
+        usint m_ell = m_params->GetEll();
+        usint m_k = m_params->GetTrapdoorParams()->GetK();
+        usint m_m = m_k + 2;
+        usint m_N = m_params->GetTrapdoorParams()->GetN();
+        usint m_base = m_params->GetTrapdoorParams()->GetBase();
+        double sb = SPECTRAL_BOUND(m_N, m_k, m_base);
+        auto ep = m_params->GetTrapdoorParams()->GetElemParams();
+
+        usint poly[m_N][(d+1)];
+        long int q= mpkZZG.u.GetModulus().ConvertToInt();
+        //std::cout << q << "\n";
+        srand(time(0));
+        poly[0][0]=rand() % q;
+        std::cout << poly[0][0] << "\n";
+        usint ii=2;
+        poly[ii][ii]=3;
+        for (usint i = 0; i < m_N; i++){
+            for (usint j=1; j<d+1;  j++)
+                poly[i][j]=rand() % q;
+            }
+        }
+
+/*
+        // always sample in Format::COEFFICIENT format
+        Matrix<Element> skB(Element::MakeDiscreteGaussianCoefficientAllocator(
+                          ep, Format::COEFFICIENT, sb),
+                      m_m, m_ell); //le colonne sono i vettori e_i
+
+        // #pragma omp parallel for
+        for (usint j = 0; j < m_ell; j++) {
+            for (usint i = 0; i < m_m; i++) skB(i, j).SwitchFormat(); //cambia in EVAL
+        }
+
+        Element y(ep, Format::EVALUATION, true);
+        Element z(ep, Format::EVALUATION, true);
+        std::vector<Element> z_vectors(m_ell);
+
+        const Matrix<Element>& pubElemBPos = mpk.GetBPos();
+        const Matrix<Element>& pubElemBNeg = mpk.GetBNeg();
+        const std::vector<usint> s = id.GetS(); //letteralmente l'user attribute list
+        const Element& pubElemD = mpk.GetPubElemD();
+
+        // #pragma omp parallel for firstprivate(z) num_threads(4)
+        for (usint i = 0; i < m_ell; i++) {
+            if (s[i] == 1) {
+             z = pubElemBPos(i, 0) * skB(0, i);
+             for (usint j = 1; j < m_m; j++) z += pubElemBPos(i, j) * skB(j, i);
+         } else {
+             z = pubElemBNeg(i, 0) * skB(0, i);
+            for (usint j = 1; j < m_m; j++) z += pubElemBNeg(i, j) * skB(j, i);
+         }
+                 z_vectors.at(i) = z;
+          }
+
+          for (usint i = 0; i < m_ell; i++) {
+            y += z_vectors.at(i);
+          }
+
+          y = pubElemD - y;
+
+          Matrix<Element> skA(
+              Element::Allocator(m_params->GetTrapdoorParams()->GetElemParams(),
+                                 Format::EVALUATION),
+              m_m, 1);
+          skA = RLWETrapdoorUtility<Element>::GaussSamp(
+              m_N, m_k, mpk.GetA(), msk.GetTA(), y,
+              m_params->GetTrapdoorParams()->GetDGG(),
+              m_params->GetTrapdoorParams()->GetDGGLargeSigma(), m_base);
+          Matrix<Element> sk(Element::Allocator(ep, Format::COEFFICIENT), m_m,
+                             m_ell + 1);
+          for (usint i = 0; i < m_m; i++) (sk)(i, 0) = skA(i, 0);
+
+          // #pragma omp parallel for num_threads(4)
+          for (usint i = 0; i < m_ell; i++)
+            for (usint j = 0; j < m_m; j++) (sk)(j, i + 1) = skB(j, i);
+
+          usk->SetSK(std::make_shared<Matrix<Element>>(sk));
+*/
+  };
 
         void ParamsGenCPABEZZG(
         usint ringsize, usint ell, usint base,
