@@ -1,31 +1,14 @@
-#include "abecontext.h"
-#include "cpabe.h"
-#include "abecore.h"
 #include <cmath>
 #include <memory>
 #include <vector>
+#include <abecontext.h>
 
-/*
-#include "encoding/plaintextfactory.h"
-#include "lattice/elemparams.h"
-#include "lattice/ildcrtparams.h"
-#include "lattice/ilelement.h"
-#include "lattice/ilparams.h"
-#include "lattice/trapdoorparameters.h"
-#include "math/backend.h"
-#include "math/distrgen.h"
-#include "utils/inttypes.h"
-*/
-
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "lattice/poly.h"
 
 using namespace lbcrypto;
 //using namespace std;
 
 int main() {
+
     usint a;
     int b;
     a=-1;
