@@ -25,17 +25,17 @@ template <class Element>
 class CPABEMasterPublicKeyZZG{
  public:
     
-    Matrix<Element> B;
-    Matrix<Element> A;
-    Matrix<Element> Ai;
-    Element u;
+  Matrix<Element> B;
+  Matrix<Element> A;
+  Matrix<Element> Ai;
+  Element u;
     
   //f@brief Default destructor
   ~CPABEMasterPublicKeyZZG() {}
    //@brief Default constructor
   CPABEMasterPublicKeyZZG() {}
 
-    CPABEMasterPublicKeyZZG(Matrix<Element> BB, Matrix<Element> AA, Matrix<Element> Aii, Element uu){
+  CPABEMasterPublicKeyZZG(Matrix<Element> BB, Matrix<Element> AA, Matrix<Element> Aii, Element uu){
     B=BB;
     A=AA;
     Ai=Aii;
@@ -89,18 +89,69 @@ class ABEContextZZG {
         void Setj(int jj) {j=jj;}
         
         int Getj() {return j;}
-
+		
         void GenerateCPABEContextZZG(usint nelementi,usint ringsize,usint base) {
             contextZZ.GenerateCPABEContext(nelementi, ringsize, base);
         };
 
+		/*
         void Setup(usint dd,CPABEMasterPublicKeyZZG<NativePoly>* pk,
                    CPABEMasterSecretKeyZZG<NativePoly>* sk)
         {
             
-            
+          
     
         }
+		*/
+		void Setup(shared_ptr<ABECoreParams<Element>> bm_params,
+				        usint dd,
+				        CPABEMasterPublicKeyZZG<NativePoly>* mpkZZG,
+                   		CPABEMasterSecretKeyZZG<NativePoly>* mskZZG,
+				        CPABEMasterPublicKey<NativePoly>* mpk,
+                   		CPABEMasterSecretKey<NativePoly>* msk) {
+		  auto m_params = std::static_pointer_cast<CPABEParams<Element>>(bm_params);
+		  //auto* mpk = static_cast<CPABEMasterPublicKey<Element>*>(bmpk);
+		  //auto* msk = static_cast<CPABEMasterSecretKey<Element>*>(bmsk);
+
+		  typename Element::DugType& dug = m_params->GetDUG();
+		  usint m_N = m_params->GetTrapdoorParams()->GetN();
+		  usint m_ell = m_params->GetEll();
+		  usint m_m = m_params->GetTrapdoorParams()->GetK() + 2;
+		  auto zero_alloc = Element::Allocator(
+			  m_params->GetTrapdoorParams()->GetElemParams(), Format::COEFFICIENT);
+
+		  Matrix<Element> pubElemAi(zero_alloc, m_ell + dd, m_m);
+		  Element pubElemU(pubElemAi(0, 0));
+
+		  if (pubElemU.GetFormat() != Format::COEFFICIENT) pubElemU.SwitchFormat();
+		  // always sample in Format::COEFFICIENT format
+		  pubElemU.SetValues(dug.GenerateVector(m_N), Format::COEFFICIENT);
+		  pubElemU.SwitchFormat();  // always kept in Format::EVALUATION format
+
+		  for (usint i = 0; i < pubElemAi.GetRows(); i++){
+			for (usint j = 0; j < pubElemAi.GetCols(); j++) {
+			  if ((pubElemAi)(i, j).GetFormat() != Format::COEFFICIENT)
+				(pubElemAi)(i, j).SwitchFormat();
+			  // always sample in Format::COEFFICIENT format
+			  (pubElemAi)(i, j).SetValues(dug.GenerateVector(m_N),
+				                            Format::COEFFICIENT);
+			  // always kept in Format::EVALUATION format
+			  (pubElemAi)(i, j).SwitchFormat();
+			}
+		  }
+
+
+		  mpkZZG->Ai=pubElemAi;
+		  mpkZZG->u=pubElemU;
+		  /*std::pair<Matrix<Element>, RLWETrapdoorPair<Element>> keypair =
+			  RLWETrapdoorUtility<Element>::TrapdoorGen(
+				  m_params->GetTrapdoorParams()->GetElemParams(), SIGMA,
+				  m_params->GetTrapdoorParams()->GetBase(), false);
+		  mpkZZG->A=keypair.first;
+		  mskZZG->TA=keypair.second;
+		  */
+		  contextZZ.Setup(mpk, msk);
+		}
 
 };
 }
