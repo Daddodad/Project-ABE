@@ -26,12 +26,23 @@ int main() {
     usint numAttributi=6; //questo è chiaro
     context.GenerateCPABEContextZZG(numAttributi, ringsize, base);
 
-    CPABEMasterPublicKeyZZG<NativePoly> mpk;
-    CPABEMasterSecretKeyZZG<NativePoly> msk;
-
-    usint d=3;
-    context.Setup(d,&mpk, &msk);
+    CPABEMasterPublicKeyZZG<NativePoly> mpkZZG;
+    CPABEMasterSecretKeyZZG<NativePoly> mskZZG;
     
+    CPABEMasterPublicKey<NativePoly> mpk;
+    CPABEMasterSecretKey<NativePoly> msk;
+	
+	ABEContext<NativePoly> auxiliar;
+	ABECoreParams<NativePoly> parameters;
+	auxiliar.ParamsGenCPABE(ringsize, numAttributi, base, parameters);
+	
+    usint d=3;
+    context.Setup(parameters
+    
+    
+    
+    , d,&mpkZZG, &mskZZG, &mpk, &msk);
+    //std::cout << context.contextZZ.m_params->GetTrapdoorParams() << std::endl;
     
 return 0;
 }
