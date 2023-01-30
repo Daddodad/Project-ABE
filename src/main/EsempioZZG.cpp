@@ -81,5 +81,39 @@ int main() {
     // Genero tale chiave usando il metodo della classe ABEContextZZG
     context.KeyGenZZG(parameters, mpkZZG, mskZZG, ua, &sk);
 
+    // Leggo un plaintext da file
+    std::vector<int64_t> vectorOfInts;
+    file.open("../src/files//Plaintext_01.txt", std::ios::in);
+    if (!file) {
+		std::cout << "File not opened!";
+	}
+    else {
+        int i;
+        while(file >> i)
+            vectorOfInts.push_back(i);
+        std::cout << "Plaintext: " << vectorOfInts << std::endl;
+        file.close();
+    }
+    //trasformo il vettore di bit in una variabile plaintext
+    Plaintext pt = context.MakeCoefPackedPlaintextZZG(vectorOfInts);
+
+    // Encrypt the plaintext
+    std::cout << "Codifico il plaintext sotto la Access Policy" << std::endl;
+    
+    // creo una variabile ciphertext dove andare a salvare il ct 
+    CPABECiphertextZZG<NativePoly> ct;
+	
+	//usint t = 10;
+	
+    // Genero il ciphertext
+    context.EncryptZZG(parameters, mpkZZG, ap, 1, pt, &ct);
+
+    // Decrypt the ciphertext
+    std::cout << "Decritto il ciphertext" << std::endl;
+    Plaintext dt = context.DecryptZZG(parameters, ap, ua, 1, sk, ct);
+    //std::cout << "test";
+    //std::cout << "Il Plaintext è" << dt->GetElement<NativePoly>() << "\n";
+
+
 return 0;
 }
