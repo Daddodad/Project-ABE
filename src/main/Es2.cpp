@@ -43,6 +43,9 @@ std::vector<int> access_policy(6);
 
 //matrice.SetSize(1,9);
 //std::cout << mpk.GetA().GetAllocator();
+std::fstream my_file66;
+my_file66.open("../src/files/A2.txt", std::ios::out);
+mpk.GetA().save(my_file66,1);
 
 NativePoly pippo=contesto.GenerateRandomElement();
 //matrice.HStack(pippo);
