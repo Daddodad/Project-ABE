@@ -11,9 +11,6 @@
 using namespace lbcrypto;
 int main() {
 
-long int x=444;
-long int n=10007;
-std::cout << "il reciproco di " << x << " mod " << n << " è " << reciproco(x,n) << std::endl;
 /*
 
 

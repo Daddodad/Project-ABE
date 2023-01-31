@@ -5,54 +5,21 @@
 #include <vector>
 #include <random>
 
-
+#include "abeparamset.h"
+#include "cpabe.h"
+#include "ibe.h"
 #include "abecontext.h"
-
-long int reciproco(long int num, long int modulo){
-    std::vector<long int> esponenti;
-    //std::cout << "--------------------------------------------------------------------" << std::endl;
-    long int esptemp=0;
-    long int esponente =modulo-1;
-    //std::cout << esptemp << std::endl;
-    //std::cout << esponente << std::endl;
-    while(pow(2,esptemp)<esponente){
-        esptemp++;
-    }
-    
-    //std::cout << "sono qui " << esptemp << std::endl;
-
-    esptemp=esptemp-1;
-    while(esptemp>=0){
-        //std::cout << esponente;
-        if(pow(2,esptemp)<esponente){ 
-            esponenti.push_back(esptemp);
-            esponente-=pow(2,esptemp);
-            }
-        esptemp--;
-    }
-    std::sort(esponenti.begin(), esponenti.end());
-    //for(usint i=0;i<esponenti.size();i++) std::cout << "guarda te " << i << " " << esponenti[i] << std::endl;
-    long int temp=num;
-    long int inverso=1;
-    usint h=0;
-    for(usint i=0;i<=esponenti[esponenti.size()-1]; i++){
-        //std::cout << "inverso " << inverso << std::endl;
-        if(esponenti[h]==i){
-            //std::cout << "aggiungo  "<< num << "alla" <<i;
-            h++;
-            inverso*=temp;
-            inverso=inverso % modulo;  
-        }
-        std::cout << "temp " << temp << std::endl;
-        temp=temp*temp ;
-        temp=temp % modulo;
-        //std::cout << "temp " << temp << std::endl;
-        //std::cout << "inverso " << inverso << std::endl;
-    }
-    //std::cout << "inverso " << inverso << std::endl;
-    return inverso;
-
-}
+#include "abecore.h"
+#include "palisade.h"
+#include "encoding/plaintextfactory.h"
+#include "lattice/elemparams.h"
+#include "lattice/ildcrtparams.h"
+#include "lattice/ilelement.h"
+#include "lattice/ilparams.h"
+#include "lattice/trapdoorparameters.h"
+#include "math/backend.h"
+#include "math/distrgen.h"
+#include "utils/inttypes.h"
 
 
 namespace lbcrypto {
@@ -332,12 +299,14 @@ float index_i;
 usint index_j;     
 
 /*
-p(0,0)[0]=5;
-p(0,1)[0]=2;
+//p(0,0)[0]=5;
+p(0,1)[0]=3;
 p(0,2)[0]=3;
 p(0,3)[0]=4;
 p(0,4)[0]=1;                     
-*/   
+std::cout << mpkZZG.u;
+std::cout << p;
+*/
         Element temp;
        	                               
         usint h=0;
@@ -432,7 +401,7 @@ Element cont(m_params->GetTrapdoorParams()->GetElemParams(),
                Format::EVALUATION, true);  //cont è un NATIVEPOLY di 0  
 long int modulus=cont.GetModulus().ConvertToInt();
 std::vector<long int> L(d+1);
-float tempij;
+long int tempij;
 
 typename Element::DugType& dug = m_params->GetDUG();
 
@@ -455,7 +424,7 @@ for (usint j=0; j<=d; j++){
     std::cout << "tempij="<<tempij << std::endl;
     if (tempij<0) tempij+=modulus;
     temptemp=tempij;
-    std::cout << "tempij="<<temptemp[0] << std::endl;
+    std::cout << "tempij="<<temptemp << std::endl;
     inversotemp=temptemp.MultiplicativeInverse();
     inversotemp[0].ConvertToInt();
     std::cout << "iii="<<inversotemp[0] << std::endl;
@@ -466,24 +435,25 @@ for (usint j=0; j<=d; j++){
 
 std::cout << "L" << L << std::endl;
 
-
-//std::cout << m_q << std::endl;
-long double calculus=0;
-long double tempo;
 usint s_primo_pos;
-for (usint i=0; i<=d;i++){
-index_j=J[i];
-		s_primo_pos=0;
-	  	for (usint k=0; k<s_primo.size(); k++){
-	  		if (s_primo[k]==index_j){
+for (usint j=0; j<=d; j++){
+	index_j = J[j];
+	s_primo_pos=0;
+	for (usint k=0; k<s_primo.size(); k++){
+	  	if (s_primo[k]==index_j){
 	  			s_primo_pos = k;
-	  		}
-		}
-tempo=(long double)u_tilde2(0,s_primo_pos)[0].ConvertToInt();
-std::cout << "L: " <<(long double) L[i] << " * "<<std::setiosflags(std::ios::fixed) << tempo << "=" << tempo* << std::endl;
-calculus+=(long double)L[i]*tempo;
-std::cout << "calculus: " << std::setiosflags(std::ios::fixed)<<  calculus << std::endl;
+	  	}
+    }
+	//std::cout << u_tilde2(0,s_primo_pos).at(i).ConvertToInt() << std::endl;
+    std::cout << "sto nella s_primo_pos "<< s_primo[s_primo_pos] <<" e Lj "<< L[j]<<std::endl;
+	cont += u_tilde2(0,s_primo_pos)*L[j]; 
+    std::cout <<"cont temporaneo vale "<< cont[0] << std::endl;
 }
+    
+for(usint i=0; i<s_size+d; i++) std::cout <<"polinomio in " << s_primo[i] << "   " << u_tilde2(0,i)[0] <<std::endl;
+std::cout << mpkZZG.u[0]<< std::endl;
+std::cout << cont[0] << std::endl;
+std::cout << mpkZZG.u -cont << std::endl;
 
  
   };
@@ -644,7 +614,6 @@ std::cout << "calculus: " << std::setiosflags(std::ios::fixed)<<  calculus << st
   //std::cout << ctext->GetC0() << std::endl;
   
 }
-
 
 Plaintext DecryptZZG(shared_ptr<ABECoreParams<Element>> bm_params,
                                    const CPABEAccessPolicy<Element> ap,
@@ -862,7 +831,6 @@ b = b*none;
   
   /*
   for (usint j = 0; j < m_m; j++) *dtext += ctW(0, j) * sk(j, 0);
-
   usint iW = 0;
   usint iAW = 0;
   // #pragma omp parallel for
@@ -879,14 +847,11 @@ b = b*none;
       iAW++;
     }
   }
-
   *dtext = ctC1 - *dtext;
   dtext->SwitchFormat();
-
   typename Element::Integer dec, threshold = m_q >> 2, qHalf = m_q >> 1;
   for (usint i = 0; i < m_N; i++) {
     dec = dtext->at(i);
-
     if (dec > qHalf) dec = m_q - dec;
     if (dec > threshold)
       dtext->at(i) = 1;
