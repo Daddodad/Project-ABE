@@ -1,26 +1,17 @@
 #include "abecontext.h"
-#include "cpabe.h"
-#include "abecore.h"
 #include <cmath>
 #include <memory>
 #include <vector>
 
-
-#include "encoding/plaintextfactory.h"
-#include "lattice/elemparams.h"
-#include "lattice/ildcrtparams.h"
-#include "lattice/ilelement.h"
-#include "lattice/ilparams.h"
-#include "lattice/trapdoorparameters.h"
-#include "math/backend.h"
-#include "math/distrgen.h"
-#include "utils/inttypes.h"
+#include "../lib/abecontextzzg.h"
 
 #include <iostream>
 #include <fstream>
 
 using namespace lbcrypto;
 int main() {
+
+/*
 
 
 unsigned int ringsize=1024; //dimensione dello spazio?
@@ -43,6 +34,9 @@ std::vector<int> access_policy(6);
 
 //matrice.SetSize(1,9);
 //std::cout << mpk.GetA().GetAllocator();
+std::fstream my_file66;
+my_file66.open("../src/files/A2.txt", std::ios::out);
+//mpk.GetA().save(my_file66,1);
 
 NativePoly pippo=contesto.GenerateRandomElement();
 //matrice.HStack(pippo);
@@ -83,6 +77,6 @@ my_file.open("../src/files/A2.txt", std::ios::out);
         //my_file >> franco;
 		my_file.close(); 
 	}
-
+*/
 return 0;
 }
