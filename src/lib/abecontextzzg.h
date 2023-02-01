@@ -20,7 +20,7 @@
 #include "math/backend.h"
 #include "math/distrgen.h"
 #include "utils/inttypes.h"
-
+#define FLT_MAX 3.402823466e+38F 
 
 namespace lbcrypto {
 
@@ -269,45 +269,45 @@ class ABEContextZZG {
                                  Format::EVALUATION), m_m, 1);
                                  
         auto gaussian_alloc = Element::MakeDiscreteGaussianCoefficientAllocator(ep, Format::EVALUATION, sb);
+        // Format qui e nello uniform allocator determina il Formato restituito (La generazione viene invece sempre
+        // fatta in COEFFICIENT) 
         
-        Matrix<Element> e(Element::Allocator(ep, Format::COEFFICIENT), 2*m_m,
+        Matrix<Element> e(Element::Allocator(ep, Format::EVALUATION), 2*m_m,
                              s_size + d);                         
         //std::vector<Matrix<Element>> e(s_size + d);  
       
         //std::cout << m_ell+d << std::endl;
-
-std::vector<usint> J(5);
-
-J[0] = 1;
-J[1] = 3;
-J[2] = 7;
-J[3] = 8;
-J[4] = 9;
-
-std::cout << "J è" << J << std::endl;
-        
+       
 
         Matrix<Element> u_tilde(Element::Allocator(m_params->GetTrapdoorParams()->GetElemParams(),
                                  Format::EVALUATION), 1, s_size + d);
-                                            
+                                 
+//float L;
+//Element cont(m_params->GetTrapdoorParams()->GetElemParams(),
+//               Format::EVALUATION, true);                                             
 
-Matrix<Element> u_tilde2(Element::Allocator(m_params->GetTrapdoorParams()->GetElemParams(),
-                                 Format::EVALUATION), 1, s_size + d);  //MAtrice di elementi di una riga, s_size+d colonne
+//Matrix<Element> u_tilde2(Element::Allocator(m_params->GetTrapdoorParams()->GetElemParams(),
+//                                 Format::EVALUATION), 1, s_size + d);  
 
-std::cout << "s_size+d è " << s_size+d << std::endl;
-float index_i;
-usint index_j;     
 
-/*
-//p(0,0)[0]=5;
-p(0,1)[0]=3;
-p(0,2)[0]=3;
-p(0,3)[0]=4;
-p(0,4)[0]=1;                     
-std::cout << mpkZZG.u;
-std::cout << p;
-*/
+//Matrix<Element> Acopy(Element::Allocator(m_params->GetTrapdoorParams()->GetElemParams(),
+//                                 Format::EVALUATION), 1, m_m);                            
+  
+//std::cout << mpkZZG.GetA().GetRows() << std::endl;
+//std::cout << mpkZZG.GetA().GetCols() << std::endl;
+//std::cout << m_m << std::endl;
+        
         Element temp;
+        
+        /*
+        for (usint i=0; i<m_ell +d ; i++){
+        	temp = p(0,0);
+        	for (usint h=1; h< d+1; h++){
+        		 temp += p(0,h)*pow(i,h);
+        	}
+        	u_tilde(0,i) = temp;
+        }   
+       	*/ 
        	                               
         usint h=0;
         std::cout << id.GetS() << std::endl;
@@ -318,20 +318,15 @@ std::cout << p;
 				  result(0, i) = elem;
 				  i++;
 				}   
-
-std::cout << "Il polinomio calcolato in " << j << " viene messo in u_tilde(0," << h << std::endl;
-
 				temp = p(0,0);
-std::cout << "temp con solo u " << temp[0] << std::endl;
 				for (usint k=1; k< d+1; k++){
-        		 temp += p(0,k)*pow(j,k);
-std::cout << "temp con " << p(0,k)[0] << "*" << pow(j,k) << " è " << temp[0] << std::endl;
+        		 temp += p(0,k)*pow(j+1,k);
         		}
         		u_tilde(0,h) = temp;
-
-u_tilde2(0,h) = temp;
-//std::cout << h << j << std::endl;
-        		
+//std::cout << temp << std::endl;        		
+//u_tilde2(0,h) = temp;
+//std::cout << h << j << std::endl;  
+//std::cout << result(0,0)[0] << std::endl;      		
 				Matrix<Element> e2(zero_alloc, m_m, 1, gaussian_alloc); 
 				e1 = RLWETrapdoorUtility<Element>::GaussSamp(
 				      m_N, m_k, mpkZZG.GetA(), mskZZG.GetTA(), u_tilde(0,h).Minus(result.Add(mpkZZG.B).Mult(e2)(0,0)),
@@ -342,120 +337,21 @@ u_tilde2(0,h) = temp;
             		(e)(l + m_m, h) = e2(l, 0);
 				}
 				//e(h) = e1;
-				//e[h].VStack(e2);  
-				h++;        
-				
+				//e[h].VStack(e2);
+//Acopy = mpkZZG.GetA();				        
+//cont = (Acopy.HStack(result.Add(mpkZZG.B))*e.ExtractCol(h))(0,0);
+//std::cout << cont - u_tilde2(0,h) << std::endl;				 
+				h++;
+//std::cout << mpkZZG.B(0,0)[0] << std::endl;  				
+//std::cout << result(0,0)[0] << std::endl;  				
 		    }                          
         } 
-
-
-//std::cout << "u_tilde_2 è " << u_tilde2 << std::endl;
-/*
-usint x = 7;
-Element temp2 = p(0,0);
-for (usint k=1; k< d+1; k++){
-        temp2 += p(0,k)*pow(x,k);
-}
-*/
-//std::cout << u_tilde2(0,5)-temp2 << std::endl;
-//u_tilde(0,h) = temp;
-
-std::vector<usint> s_primo;
-  
-for (usint i=0; i<m_ell+d; i++){
-  	if (id.GetS()[i]==1 || m_ell<=i){
-  		s_primo.push_back(i);
-  	} 
-}
-std::cout << "s_primo" << s_primo << std::endl;
-/*
-for (usint j=0; j<=d; j++){
-  	index_j = J[j];
-  	L=1;
-  	s_primo_pos=0;
-  	for (usint k=0; k<s_primo.size(); k++){
-  		if (s_primo[k]==index_j){
-  			s_primo_pos = k;
-  		}
-	}
-  	//std::cout << "index_j " << index_j << std::endl;
-  	for (usint i=0; i<=d; i++){
-  		//std::cout << "L " << L << std::endl;
-  		//std::cout << "J[i] " << J[i] << std::endl;
-  		index_i = J[i];
-  		if (index_i!=index_j){
-  			//std::cout << "L " << L << std::endl;
-  			L = -index_i*L;  
-  			//std::cout << "L " << L << std::endl;
-  			L = L/(index_j - index_i);
-  			//std::cout << "L " << L << std::endl;
-  		}
-  	}
-  	std::cout << "L " << L << std::endl;
-  	//std::cout << "pos " << s_primo_pos << std::endl; 
-  	cont += u_tilde2(0, s_primo_pos)*L;	
-}
-*/
-
-Element cont(m_params->GetTrapdoorParams()->GetElemParams(),
-               Format::EVALUATION, true);  //cont è un NATIVEPOLY di 0  
-long int modulus=cont.GetModulus().ConvertToInt();
-std::vector<long int> L(d+1);
-long int tempij;
-
-typename Element::DugType& dug = m_params->GetDUG();
-
-Element temptemp(dug, m_params->GetTrapdoorParams()->GetElemParams(),
-            Format::COEFFICIENT);
-temptemp.SwitchFormat();
-Element inversotemp=temptemp.MultiplicativeInverse();  //cont è un NATIVEPOLY di 0
-
-for (usint j=0; j<=d; j++){
-  	index_j = J[j];
-  	L[j]=1;
-    tempij=1;
-  	for (usint i=0; i<=d; i++){
-  		index_i = J[i];
-  		if (index_i!=index_j){
-  			L[j] = -index_i*L[j]; ;
-            tempij=tempij*(index_j - index_i);
-  		}        
-  	}
-    std::cout << "tempij="<<tempij << std::endl;
-    if (tempij<0) tempij+=modulus;
-    temptemp=tempij;
-    std::cout << "tempij="<<temptemp << std::endl;
-    inversotemp=temptemp.MultiplicativeInverse();
-    inversotemp[0].ConvertToInt();
-    std::cout << "iii="<<inversotemp[0] << std::endl;
-    inversotemp*=L[j];
-    L[j] =inversotemp[0].ConvertToInt();
-}   
-
-
-std::cout << "L" << L << std::endl;
-
-usint s_primo_pos;
-for (usint j=0; j<=d; j++){
-	index_j = J[j];
-	s_primo_pos=0;
-	for (usint k=0; k<s_primo.size(); k++){
-	  	if (s_primo[k]==index_j){
-	  			s_primo_pos = k;
-	  	}
-    }
-	//std::cout << u_tilde2(0,s_primo_pos).at(i).ConvertToInt() << std::endl;
-    std::cout << "sto nella s_primo_pos "<< s_primo[s_primo_pos] <<" e Lj "<< L[j]<<std::endl;
-	cont += u_tilde2(0,s_primo_pos)*L[j]; 
-    std::cout <<"cont temporaneo vale "<< cont[0] << std::endl;
-}
-    
-for(usint i=0; i<s_size+d; i++) std::cout <<"polinomio in " << s_primo[i] << "   " << u_tilde2(0,i)[0] <<std::endl;
-std::cout << mpkZZG.u[0]<< std::endl;
-std::cout << cont[0] << std::endl;
-std::cout << mpkZZG.u -cont << std::endl;
-
- 
+        
+        usk->SetSK(std::make_shared<Matrix<Element>>(e));
+        //std::cout << usk->GetSK().GetRows() << std::endl;  
+        //std::cout << usk->GetSK().GetCols() << std::endl; 
+        //std::cout << usk->GetSK() << std::endl;   
+        
   };
  
   void EncryptZZG(shared_ptr<ABECoreParams<Element>> bm_params,
@@ -475,10 +371,23 @@ std::cout << mpkZZG.u -cont << std::endl;
   usint m_m = m_params->GetTrapdoorParams()->GetK() + 2;
   const std::vector<int32_t>& w = ap.GetW();
   auto ep = m_params->GetTrapdoorParams()->GetElemParams();
-  usint D = pow(tgamma(m_ell+d) + 1,2);
+  Element D(m_params->GetTrapdoorParams()->GetElemParams(),
+               Format::EVALUATION, true);            
+  D = 1;
+  for (usint i=2; i<=m_ell+d; i++){
+  	D = D*i;
+  }
+  
+  std::cout << "D: " << D[0] << std::endl;   
+             
+  D = D*D;
+  std::cout << std::fixed;
+  std::cout << "t_gamma: " << tgamma(m_ell + d + 1) << std::endl;  
   
   for (usint i = 0; i < m_ell; i++)
     if (w[i] != 0) lenW++;
+
+  std::cout << "LenW" << lenW << std::endl;	
 
   typename Element::DugType& dug = m_params->GetDUG();
 
@@ -507,14 +416,24 @@ std::cout << mpkZZG.u -cont << std::endl;
   if (mpkZZG.u.GetFormat() != Format::EVALUATION) {
     mpkZZG.u.SwitchFormat();
   }
+  
   Element ctC0(m_params->GetDUG(),
                m_params->GetTrapdoorParams()->GetElemParams(),
                Format::EVALUATION);   
   //std::cout << s << std::endl;
   //std::cout << mpkZZG.u << std::endl;
   //std::cout << s*mpkZZG.u << std::endl;
+  //std::cout << "Plaintext*q_half:  " <<ptxt*qHalf << std::endl;  
+  //std::cout << "s[0]: " << s[0] << std::endl;                 
+  //std::cout << "u[0]: " << mpkZZG.u[0] << std::endl;  
+  std::cout << "D: " << D[0] << std::endl;  
+  //std::cout << "err0[0]: " << err0[0] << std::endl;             
+  //std::cout << "s*u[0]: " << (s * mpkZZG.u)[0] << std::endl;  
+  //std::cout << "D*err0[0]: " << (D*err0)[0] << std::endl;   
                          
-  ctC0 = s * mpkZZG.u + D*err0 + ptxt * qHalf; 
+  ctC0 = s * mpkZZG.u + D[0]*err0 + ptxt * qHalf;
+  
+  //std::cout << "ctC0[0]: " << ctC0[0] << std::endl; 
   
   //std::cout << ctC0 << std::endl; 
   
@@ -539,10 +458,8 @@ std::cout << mpkZZG.u -cont << std::endl;
  
  Matrix<Element> ctCi(Element::Allocator(ep, Format::EVALUATION), lenW + d - t + 1,
                       m_m);
- 
- auto zero_alloc = Element::Allocator(ep, Format::EVALUATION);
- 
- Matrix<Element> AiCopy(zero_alloc, 1, mpkZZG.Ai.GetCols());          
+
+ Matrix<Element> AiCopy(Element::Allocator(ep, Format::EVALUATION), 1, mpkZZG.Ai.GetCols());          
  
  //auto uniform_alloc = Element::MakeDiscreteUniformAllocator(ep, Format::EVALUATION);
  std::random_device rd;
@@ -581,7 +498,7 @@ std::cout << mpkZZG.u -cont << std::endl;
  usint k=0;
  int r;  
  Element somma(m_params->GetTrapdoorParams()->GetElemParams(),
-               Format::COEFFICIENT, true);                  
+               Format::EVALUATION, true);                  
  for (usint i = 0; i < m_ell + d - t + 1; i++) {
  	if(ap.GetW()[i]==1 || m_ell<=i){   
 		usint h = 0;
@@ -596,6 +513,7 @@ std::cout << mpkZZG.u -cont << std::endl;
 				if(r!=1){
 					r = -1;
 				}
+				//std::cout << r << std::endl;
 				somma += r*err_primo(0,l);
 			}
 			ctCi(k, j) = AiCopy.Add(mpkZZG.B)(0,j) * s + D*somma;  //D*R(0, j)*err_primo(0, j);
@@ -614,6 +532,7 @@ std::cout << mpkZZG.u -cont << std::endl;
   //std::cout << ctext->GetC0() << std::endl;
   
 }
+
 
 Plaintext DecryptZZG(shared_ptr<ABECoreParams<Element>> bm_params,
                                    const CPABEAccessPolicy<Element> ap,
@@ -703,7 +622,7 @@ Plaintext DecryptZZG(shared_ptr<ABECoreParams<Element>> bm_params,
   std::cout << J << std::endl;
   
   auto zero_alloc = Element::Allocator(
-			  m_params->GetTrapdoorParams()->GetElemParams(), Format::COEFFICIENT);
+			  m_params->GetTrapdoorParams()->GetElemParams(), Format::EVALUATION);
   Matrix<Element> b_j(zero_alloc, 1, d+1);
   //std::cout << b_j << std::endl;
   
@@ -741,34 +660,56 @@ Plaintext DecryptZZG(shared_ptr<ABECoreParams<Element>> bm_params,
   //std::cout << b_j.GetRows() << std::endl;
   //std::cout << b_j.GetCols() << std::endl;
   
-  //float L;
-  Element b(m_params->GetTrapdoorParams()->GetElemParams(),
-               Format::EVALUATION, true);               
+  //float L;              
   
   float index_i;
-  /*
-  for (usint j=0; j<=d; j++){
-  	index_j = J[j];
-  	L=1;
-  	//std::cout << "index_j " << index_j << std::endl;
-  	for (usint i=0; i<=d; i++){
-  		//std::cout << "L " << L << std::endl;
-  		//std::cout << "J[i] " << J[i] << std::endl;
-  		index_i = J[i];
-  		if (index_i!=index_j){
-  			//std::cout << "L " << L << std::endl;
-  			L = -index_i*L;  
-  			//std::cout << "L " << L << std::endl;
-  			L = L/(index_j - index_i);
-  			//std::cout << "L " << L << std::endl;
-  		}
-  	}
-  	//std::cout << "L " << L << std::endl; 
-  	b += b_j(0,j)*L;	
-  }
-  */
   
+long int modulus=m_q.ConvertToInt();
+std::cout << modulus << std::endl;
+std::vector<long int> L(d+1);
+long int tempij;
 
+typename Element::DugType& dug = m_params->GetDUG();
+
+Element temptemp(dug, m_params->GetTrapdoorParams()->GetElemParams(),
+            Format::COEFFICIENT);
+temptemp.SwitchFormat();
+Element inversotemp=temptemp.MultiplicativeInverse();  //cont è un NATIVEPOLY di 0
+
+for (usint j=0; j<=d; j++){
+  	index_j = J[j]+1;
+  	L[j]=1;
+    tempij=1;
+  	for (usint i=0; i<=d; i++){
+  		index_i = J[i]+1;
+  		if (index_i!=index_j){
+  			L[j] = -index_i*L[j]; ;
+            tempij=tempij*(index_j - index_i);
+  		}        
+  	}
+  	//std::cout << L[j] << std::endl;
+    //std::cout << "tempij="<<tempij << std::endl;
+    if (tempij<0) tempij+=modulus;
+    temptemp=tempij;
+    //std::cout << "tempij="<<temptemp[0] << std::endl;
+    inversotemp=temptemp.MultiplicativeInverse();
+    inversotemp[0].ConvertToInt();
+    //std::cout << "iii="<<inversotemp[0] << std::endl;
+    inversotemp*=L[j];
+    L[j] =inversotemp[0].ConvertToInt();
+} 
+  
+  std::cout << "L" << L << std::endl;  
+  
+  Element b(m_params->GetTrapdoorParams()->GetElemParams(),
+               Format::EVALUATION, true); 
+
+  for (usint j=0; j<=d; j++){
+  	b += b_j(0,j)*L[j];	
+  }
+
+  
+/*
 std::vector<float> L(d+1);  
 for (usint j=0; j<=d; j++){
   	index_j = J[j];
@@ -812,16 +753,25 @@ Element none(m_params->GetTrapdoorParams()->GetElemParams(),
 none = none+1;         
 
 b = b*none;   
+*/
   
   Element rr(m_params->GetTrapdoorParams()->GetElemParams(),
                Format::EVALUATION, true); 
             
   rr = ctext.GetC0() - b;
   
+  //std::cout << rr << std::endl;
+  
+  dtext->SwitchFormat();
+  
   typename Element::Integer dec, threshold = m_q >> 2, qHalf = m_q >> 1;
+  
+  //std::cout << threshold << std::endl;
+  //std::cout << rr.at(0).SerializedObjectName() << std::endl;
+  //std::cout << dec.SerializedObjectName() << std::endl;
+  
   for (usint i = 0; i < m_N; i++) {
     dec = rr.at(i);
-
     if (dec > qHalf) dec = m_q - dec;
     if (dec > threshold)
       dtext->at(i) = 1;
@@ -831,6 +781,7 @@ b = b*none;
   
   /*
   for (usint j = 0; j < m_m; j++) *dtext += ctW(0, j) * sk(j, 0);
+
   usint iW = 0;
   usint iAW = 0;
   // #pragma omp parallel for
@@ -847,11 +798,14 @@ b = b*none;
       iAW++;
     }
   }
+
   *dtext = ctC1 - *dtext;
   dtext->SwitchFormat();
+
   typename Element::Integer dec, threshold = m_q >> 2, qHalf = m_q >> 1;
   for (usint i = 0; i < m_N; i++) {
     dec = dtext->at(i);
+
     if (dec > qHalf) dec = m_q - dec;
     if (dec > threshold)
       dtext->at(i) = 1;
