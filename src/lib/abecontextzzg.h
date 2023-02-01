@@ -144,6 +144,8 @@ class ABEContextZZG {
         int j;
         ABEContext<Element> contextZZ;
         usint d;
+
+Element MMM;
     
         //Distruttore di Default
         ~ABEContextZZG() {}
@@ -381,6 +383,10 @@ class ABEContextZZG {
   std::cout << "D: " << D[0] << std::endl;   
              
   D = D*D;
+
+//CLAUSOLA D; CON D=O FUNZIONA TUTTO
+D=0;
+
   std::cout << std::fixed;
   std::cout << "t_gamma: " << tgamma(m_ell + d + 1) << std::endl;  
   
@@ -416,19 +422,29 @@ class ABEContextZZG {
   if (mpkZZG.u.GetFormat() != Format::EVALUATION) {
     mpkZZG.u.SwitchFormat();
   }
-  
+//std::cout << "plaintext"<< ptxt;
   Element ctC0(m_params->GetDUG(),
                m_params->GetTrapdoorParams()->GetElemParams(),
                Format::EVALUATION);   
   //std::cout << s << std::endl;
   //std::cout << mpkZZG.u << std::endl;
   //std::cout << s*mpkZZG.u << std::endl;
-  //std::cout << "Plaintext*q_half:  " <<ptxt*qHalf << std::endl;  
+//std::cout << "Plaintext*q_half:  " <<ptxt*qHalf << std::endl;
+
+MMM=ptxt*qHalf;
+/*
+Element ptxtEVAL(m_params->GetDUG(),
+               m_params->GetTrapdoorParams()->GetElemParams(),
+               Format::EVALUATION);
+ptxtEVAL=(ptxt*qHalf);
+ptxtEVAL.SwitchFormat();
+  std::cout << "Plaintext*q_half (Switch):  " << ptxtEVAL<< std::endl;
+*/
   //std::cout << "s[0]: " << s[0] << std::endl;                 
   //std::cout << "u[0]: " << mpkZZG.u[0] << std::endl;  
   std::cout << "D: " << D[0] << std::endl;  
   //std::cout << "err0[0]: " << err0[0] << std::endl;             
-  //std::cout << "s*u[0]: " << (s * mpkZZG.u)[0] << std::endl;  
+  std::cout << "s*u[0]: " << (s * mpkZZG.u)[0] << std::endl;  
   //std::cout << "D*err0[0]: " << (D*err0)[0] << std::endl;   
                          
   ctC0 = s * mpkZZG.u + D[0]*err0 + ptxt * qHalf;
@@ -507,6 +523,7 @@ class ABEContextZZG {
 			h++;
 		}
 	 	for (usint j = 0; j < m_m; j++){
+           
 	 		somma = 0;
 			for (usint l=0; l< m_m; l++){
 				r = distribution(gen);
@@ -516,6 +533,15 @@ class ABEContextZZG {
 				//std::cout << r << std::endl;
 				somma += r*err_primo(0,l);
 			}
+        
+/*
+r = distribution(gen);
+if(r!=1){
+r = -1;
+}
+somma=r*err_primo(0,j);
+*/
+
 			ctCi(k, j) = AiCopy.Add(mpkZZG.B)(0,j) * s + D*somma;  //D*R(0, j)*err_primo(0, j);
 		}
 		k++;
@@ -708,6 +734,8 @@ for (usint j=0; j<=d; j++){
   	b += b_j(0,j)*L[j];	
   }
 
+    std::cout << "b[0] = " << b[0] << std::endl;
+
   
 /*
 std::vector<float> L(d+1);  
@@ -759,11 +787,22 @@ b = b*none;
                Format::EVALUATION, true); 
             
   rr = ctext.GetC0() - b;
-  
-  //std::cout << rr << std::endl;
+
+std::cout << "    " <<m_q/5 << std::endl;
+for (usint i=0;i<10;i++){
+ if((rr[i]>MMM[i])){
+    std::cout << "neg " << rr[i]-MMM[i] << std::endl; 
+    }else{ 
+std::cout << "pos"<< rr[i]-MMM[i] << std::endl;
+}
+}
+MMM.SwitchFormat();
+//std::cout <<rr-MMM;
+
+  //std::cout << "r "<< rr << std::endl;
   
   dtext->SwitchFormat();
-  
+  rr.SwitchFormat();
   typename Element::Integer dec, threshold = m_q >> 2, qHalf = m_q >> 1;
   
   //std::cout << threshold << std::endl;
@@ -779,40 +818,6 @@ b = b*none;
       dtext->at(i) = typename Element::Integer(0);
   }             
   
-  /*
-  for (usint j = 0; j < m_m; j++) *dtext += ctW(0, j) * sk(j, 0);
-
-  usint iW = 0;
-  usint iAW = 0;
-  // #pragma omp parallel for
-  for (usint i = 0; i < m_ell; i++) {
-    if (w[i] == 1 || w[i] == -1) {
-      for (usint j = 0; j < m_m; j++) *dtext += ctW(iW + 1, j) * sk(j, i + 1);
-      iW++;
-    } else {
-      if (s[i] == 1) {
-        for (usint j = 0; j < m_m; j++) *dtext += cPos(iAW, j) * sk(j, i + 1);
-      } else {
-        for (usint j = 0; j < m_m; j++) *dtext += cNeg(iAW, j) * sk(j, i + 1);
-      }
-      iAW++;
-    }
-  }
-
-  *dtext = ctC1 - *dtext;
-  dtext->SwitchFormat();
-
-  typename Element::Integer dec, threshold = m_q >> 2, qHalf = m_q >> 1;
-  for (usint i = 0; i < m_N; i++) {
-    dec = dtext->at(i);
-
-    if (dec > qHalf) dec = m_q - dec;
-    if (dec > threshold)
-      dtext->at(i) = 1;
-    else
-      dtext->at(i) = typename Element::Integer(0);
-  }
-  */
   return ptext; 
 }
 

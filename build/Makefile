@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daddodad/Scrivania/P
+CMAKE_SOURCE_DIR = /home/daddodad/Scrivania/Project-ABE
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daddodad/Scrivania/P/build
+CMAKE_BINARY_DIR = /home/daddodad/Scrivania/Project-ABE/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/P/build/CMakeFiles /home/daddodad/Scrivania/P/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/Project-ABE/build/CMakeFiles /home/daddodad/Scrivania/Project-ABE/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/P/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daddodad/Scrivania/Project-ABE/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -163,19 +163,6 @@ EsempioZZG/fast:
 .PHONY : EsempioZZG/fast
 
 #=============================================================================
-# Target rules for targets named Es2
-
-# Build rule for target.
-Es2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Es2
-.PHONY : Es2
-
-# fast build rule for target.
-Es2/fast:
-	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/build
-.PHONY : Es2/fast
-
-#=============================================================================
 # Target rules for targets named cpa-abe
 
 # Build rule for target.
@@ -187,33 +174,6 @@ cpa-abe: cmake_check_build_system
 cpa-abe/fast:
 	$(MAKE) -f CMakeFiles/cpa-abe.dir/build.make CMakeFiles/cpa-abe.dir/build
 .PHONY : cpa-abe/fast
-
-src/main/Es2.o: src/main/Es2.cpp.o
-
-.PHONY : src/main/Es2.o
-
-# target to build an object file
-src/main/Es2.cpp.o:
-	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/src/main/Es2.cpp.o
-.PHONY : src/main/Es2.cpp.o
-
-src/main/Es2.i: src/main/Es2.cpp.i
-
-.PHONY : src/main/Es2.i
-
-# target to preprocess a source file
-src/main/Es2.cpp.i:
-	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/src/main/Es2.cpp.i
-.PHONY : src/main/Es2.cpp.i
-
-src/main/Es2.s: src/main/Es2.cpp.s
-
-.PHONY : src/main/Es2.s
-
-# target to generate assembly for a file
-src/main/Es2.cpp.s:
-	$(MAKE) -f CMakeFiles/Es2.dir/build.make CMakeFiles/Es2.dir/src/main/Es2.cpp.s
-.PHONY : src/main/Es2.cpp.s
 
 src/main/Esempio.o: src/main/Esempio.cpp.o
 
@@ -362,11 +322,7 @@ help:
 	@echo "... ibe"
 	@echo "... cp-abe-two-phase"
 	@echo "... EsempioZZG"
-	@echo "... Es2"
 	@echo "... cpa-abe"
-	@echo "... src/main/Es2.o"
-	@echo "... src/main/Es2.i"
-	@echo "... src/main/Es2.s"
 	@echo "... src/main/Esempio.o"
 	@echo "... src/main/Esempio.i"
 	@echo "... src/main/Esempio.s"

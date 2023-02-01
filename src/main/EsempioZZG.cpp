@@ -112,7 +112,7 @@ int main() {
     std::cout << "Decritto il ciphertext" << std::endl;
     Plaintext dt = context.DecryptZZG(parameters, ap, ua, 1, sk, ct);
     //std::cout << "test";
-    //std::cout << "Il Plaintext è" << dt->GetElement<NativePoly>() << "\n";
+    std::cout << "Il Plaintext è " << dt->GetElement<NativePoly>() << "\n";
 
 
 return 0;
